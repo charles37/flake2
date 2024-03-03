@@ -135,6 +135,7 @@ in with lib; {
       '' else ''
 	bind = ${modifier},W,exec,${browser}
       ''}
+      bind = ${modifier},A,exec,signal-desktop
       bind = ${modifier},E,exec,emopicker9000
       bind = ${modifier},S,exec,screenshootin
       bind = ${modifier},D,exec,discord

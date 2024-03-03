@@ -11,6 +11,12 @@ in {
     gimp obs-studio rustup audacity pavucontrol tree
     font-awesome spotify swayidle neovide element-desktop swaylock
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+    #Bens packages
+    chromium
+    signal-desktop
+    git-credential-manager
+
+
     # Import Scripts
     (import ./../scripts/emopicker9000.nix { inherit pkgs; })
     (import ./../scripts/task-waybar.nix { inherit pkgs; })

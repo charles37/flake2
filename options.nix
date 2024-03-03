@@ -4,17 +4,17 @@
 
 let
   # THINGS YOU NEED TO CHANGE
-  username = "zaney";
-  hostname = "hyprnix";
+  username = "ben";
+  hostname = "nora";
   userHome = "/home/${username}";
-  flakeDir = "${userHome}/zaneyos";
+  flakeDir = "${userHome}/flake2";
   waybarStyle = "simplebar"; # simplebar, slickbar, or default
 in {
   # User Variables
-  username = "${username}";
-  hostname = "${hostname}";
-  gitUsername = "Tyler Kelley";
-  gitEmail = "tylerzanekelley@gmail.com";
+  username = "ben";
+  hostname = "nora";
+  gitUsername = "charles37";
+  gitEmail = "charles37@github.com";
   theme = "3024";
   slickbar = if waybarStyle == "slickbar" then true else false;
   simplebar = if waybarStyle == "simplebar" then true else false;
@@ -37,13 +37,13 @@ in {
   theSecondKBDLayout = "de";
   theKBDVariant = "";
   theLCVariables = "en_US.UTF-8";
-  theTimezone = "America/Chicago";
+  theTimezone = "America/New_York";
   theShell = "bash"; # Possible options: bash, zsh
   theKernel = "zen"; # Possible options: default, latest, lqx, xanmod, zen
   sdl-videodriver = "x11"; # Either x11 or wayland ONLY. Games might require x11 set here
   # For Hybrid Systems intel-nvidia
   # Should Be Used As gpuType
-  cpuType = "intel";
+  cpuType = "amd";
   gpuType = "amd";
 
   # Nvidia Hybrid Devices
@@ -67,8 +67,8 @@ in {
   # Enable Flatpak & Larger Programs
   distrobox = false;
   flatpak = false;
-  kdenlive = true;
-  blender = true;
+  kdenlive = false;
+  blender = false;
 
   # Enable Support For
   # Logitech Devices

@@ -22,12 +22,17 @@ in {
       hlsearch = false;
       incsearch = true;
       termguicolors = true;
-      scrolloff = 8;
+      scrolloff = 5;         # Adjusted to match second configuration
       updatetime = 50;
+      guicursor = "";        # From second configuration
+      expandtab = true;      # Ensure tabs are spaces, from second config
+      undofile = true;       # Enable undo file, from second config
+      signcolumn = "no";     # Adjust sign column, from second config
+      colorcolumn = "";      # From second configuration
     };
 
-    colorschemes.base16.enable = true;
-    colorschemes.base16.customColorScheme = {
+    colorschemes.base16.enable = true; # Keeping colorscheme from first config
+    colorschemes.base16.customColorScheme = { # Custom colorscheme from first config
       base00 = "#${theme.base00}";
       base01 = "#${theme.base01}";
       base02 = "#${theme.base02}";
@@ -45,16 +50,19 @@ in {
       base0E = "#${theme.base0E}";
       base0F = "#${theme.base0F}";
     };
-    
-    plugins = {
+
+    # Merging plugins from both configs, keeping unique ones and combining settings
+    plugins = with plugins; {
       barbecue.enable = true;
       gitsigns.enable = true;
       telescope = {
-	enable = true;
-	keymaps = {
-	  "<leader>ff" = "find_files";
-	  "<leader>lg" = "live_grep";
-	};
+        enable = true;
+        keymaps = {
+          "<leader>pf" = "find_files"; # From second config
+          "<C-p>" = "git_files"; # From second config
+          "<leader>ps" = "live_grep"; # From second config
+        };
+        keymapsSilent = true; # From second config
       };
       indent-blankline.enable = true;
       nvim-colorizer.enable = true;
@@ -63,64 +71,151 @@ in {
       comment-nvim.enable = true;
       lualine = {
         enable = true;
+        theme = "bubbles_theme"; # Defined in extraConfigLua
       };
       startup = { 
-	enable = true;
-	theme = "dashboard";
+        enable = true;
+        theme = "dashboard";
       };
       lsp = {
-	enable = true;
-	servers = {
-	  tsserver.enable = true;
-	  lua-ls.enable = true;
-	  bashls.enable = true;
-	  rust-analyzer = {
-	    enable = true;
-	    installRustc = true;
-	    installCargo = true;
-	  };
-	  nixd.enable = true;
-	  html.enable = true;
-	  ccls.enable = true;
-	  cmake.enable = true;
-	  csharp-ls.enable = true;
-	  cssls.enable = true;
-	  gopls.enable = true;
-	  jsonls.enable = true;
-	  pyright.enable = true;
-	  tailwindcss.enable = true;
-	};
+        enable = true;
+        keymaps = {
+          diagnostic = {
+            "<leader>vd" = "open_float";
+            "[d" = "goto_next";
+            "]d" = "goto_prev";
+          };
+          lspBuf = {
+            gd = "definition";
+            K = "hover";
+            "<leader>vws" = "workspace_symbol";
+            "<leader>vca" = "code_action";
+            "<leader>vrr" = "references";
+            "<leader>vrn" = "rename";
+            "<leader>f"   = "format";
+          };
+          silent = true;
+        };
+        servers = {
+          tsserver.enable = true;
+          lua-ls.enable = true;
+          bashls.enable = true;
+          rust-analyzer = {
+            enable = true;
+            installRustc = true;
+            installCargo = true;
+          };
+          nixd.enable = true;
+          html.enable = true;
+          ccls.enable = true;
+          cmake.enable = true;
+          csharp-ls.enable = true;
+          cssls.enable = true;
+          gopls.enable = true;
+          jsonls.enable = true;
+          pyright.enable = true;
+          tailwindcss.enable = true;
+          # Additional servers from second config
+          eslint = { enable = true; };
+          hls = { enable = true; };
+          elmls = { enable = true; };
+        };
+      };
+      harpoon = {
+        enable = true;
+        enableTelescope = true;
+        keymaps = {
+          addFile = "<leader> a";
+          cmdToggleQuickMenu = "<C-e>";
+
+          navFile = {
+            "1" = "<C-h>";
+            "2" = "<C-t>";
+            "3" = "<C-t>";
+            "4" = "<C-t>";
+          };
+        };
+        
       };
       lsp-lines.enable = true;
       treesitter = {
-	enable = true;
-	nixGrammars = true;
+        enable = true;
+        nixGrammars = true; # From first config
+        ensureInstalled = "all"; # From second config
       };
       nvim-cmp = {
-	enable = true;
-	autoEnableSources = true;
-	sources = [
-	  { name = "nvim_lsp"; }
-	  { name = "path"; }
-	  { name = "buffer"; }
-	];
-	mapping = {
-	  "<CR>" = "cmp.mapping.confirm({ select = true })";
-	  "<Tab>" = {
-	    action = ''cmp.mapping.select_next_item()'';
-	    modes = [ "i" "s" ];
-	  };
-	};
+        enable = true;
+        autoEnableSources = true;
+        sources = [
+            { name = "nvim_lsp"; }
+            { name = "luasnip"; option = { show_autosnippets = true; }; } # From second config
+            { name = "path"; }
+            { name = "buffer"; }
+            #{ name = "copilot-vim"; } not necessary
+        ];
+        mapping = {
+          "<CR>" = "cmp.mapping.confirm({ select = true })"; # From first config
+          "<C-j>" = { action = ''cmp.mapping.select_next_item()''; modes = [ "i" "s" ]; }; # From first config
+        };
+        mappingPresets = ["insert"]; # From second config
+        preselect = "Item"; # From second config
       };
+      copilot-vim.enable = true; # From second config
+      cmp-nvim-lsp.enable = true; # From second config
+      luasnip.enable = true; # From second config
+      cmp_luasnip.enable = true; # From second config
     };
+    # Merging keymaps from both configurations
+    keymaps = [
+      #{
+      #  key = "<Tab>";
+      #  action = ":bnext<CR>";
+      #  options.silent = false;
+      #}
+      #{
+      #  key = "<S-Tab>";
+      #  action = ":bprev<CR>";
+      #  options.silent = false;
+      #}
+      # Additional keymaps from second configuration
+      { mode = "n"; key = "<leader>pv"; action = ":Ex<CR>"; }
+      { mode = "v"; key = "J"; action = ":m '>+1<CR>gv=gv"; }
+      { mode = "v"; key = "K"; action = ":m '<-2<CR>gv=gv"; }
+      { mode = "n"; key = "J"; action = "mzJ`z"; }
+      { mode = "n"; key = "<C-d>"; action = "<C-d>zz"; }
+      { mode = "n"; key = "<C-u>"; action = "<C-u>zz"; }
+      { mode = "n"; key = "n"; action = "nzzzv"; }
+      { mode = "n"; key = "N"; action = "Nzzzv"; }
+      { mode = "x"; key = "<leader>p"; action = "\"_dP"; }
+      { mode = "n"; key = "<leader>y"; action = "\"+y"; }
+      { mode = "v"; key = "<leader>y"; action = "\"+y"; }
+      { mode = "n"; key = "<leader>Y"; action = "\"+Y"; }
+      { mode = "n"; key = "<leader>d"; action = "\"_d"; }
+      { mode = "v"; key = "<leader>d"; action = "\"_d"; }
+      { mode = "i"; key = "<C-c>"; action = "<Esc>"; }
+      { mode = "n"; key = "Q"; action = "<nop>"; }
+      { mode = "n"; key = "<C-f>"; action = "<cmd>silent !tmux neww tmux-sessionizer<CR>"; }
+      { mode = "n"; key = "<leader>f"; action = "vim.lsp.buf.format"; }
+      { mode = "n"; key = "<C-k>"; action = "<cmd>cnext<CR>zz"; }
+      { mode = "n"; key = "<C-j>"; action = "<cmd>cprev<CR>zz"; }
+      { mode = "n"; key = "<leader>k"; action = "<cmd>lnext<CR>zz"; }
+      { mode = "n"; key = "<leader>j"; action = "<cmd>lprev<CR>zz"; }
+      { mode = "n"; key = "<leader>s"; action = ":<C-u>%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left><CR>"; }
+      { mode = "n"; key = "<leader>x"; action = "<cmd>!chmod +x %<CR>"; options = { silent = true; }; }
+      { mode = "n"; key = "<leader>mr"; action = "<cmd>CellularAutomaton make_it_rain<CR>"; }
+      { mode = "n"; key = "<leader><leader>"; action = "function() vim.cmd(\"so\") end"; }
+      { mode = "n"; key = "<leader>vpp"; action = "<cmd>e ~/flake/hosts/home.nix<CR>"; }
 
-    extraPlugins = [ plugins.telescope-file-browser-nvim ];
+    ];
 
-    # FOR NEOVIDE
-    extraConfigLua = '' 
+    extraConfigLua = ''
       vim.opt.guifont = "JetBrainsMono\\ NFM,Noto_Color_Emoji:h14"
       vim.g.neovide_cursor_animation_length = 0.05
+      vim.g.mapleader = ' '
+      vim.keymap.set("n", "<leader><leader>", function() vim.cmd("so") end)
+      vim.opt.isfname:append("@-@");
 
+      -- Custom colors defined in the first configuration
       local colors = {
         blue   = '#${theme.base0D}',
         cyan   = '#${theme.base0C}',
@@ -137,11 +232,9 @@ in {
           b = { fg = colors.white, bg = colors.grey },
           c = { fg = colors.black, bg = colors.black },
         },
-
         insert = { a = { fg = colors.black, bg = colors.blue } },
         visual = { a = { fg = colors.black, bg = colors.cyan } },
         replace = { a = { fg = colors.black, bg = colors.red } },
-
         inactive = {
           a = { fg = colors.white, bg = colors.black },
           b = { fg = colors.white, bg = colors.black },
@@ -184,26 +277,7 @@ in {
       set noshowmode
       inoremap jj <ESC>
     '';
-
-    keymaps = [
-      {
-        mode = "n";
-        key = "<space>fb";
-        action = ":Telescope file_browser<CR>";
-        options.noremap = true;
-      }
-      {
-        key = "<Tab>";
-        action = ":bnext<CR>";
-        options.silent = false;
-      }
-      {
-        key = "<S-Tab>";
-        action = ":bprev<CR>";
-        options.silent = false;
-      }
-    ];
-
-
   };
- } 
+}
+
+

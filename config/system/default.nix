@@ -20,6 +20,7 @@
     ./nvidia.nix
     ./packages.nix
     ./polkit.nix
+    ./postgres.nix
     ./python.nix
     ./printer.nix
     ./services.nix
