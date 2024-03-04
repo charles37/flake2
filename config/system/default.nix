@@ -8,6 +8,7 @@
     ./boot.nix
     ./displaymanager.nix
     ./distrobox.nix
+    ./docker.nix
     ./flatpak.nix
     ./hwclock.nix
     ./intel-amd.nix

@@ -12,7 +12,6 @@ in {
     font-awesome spotify swayidle neovide element-desktop swaylock
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     #Bens packages
-    chromium
     signal-desktop
     git-credential-manager
 

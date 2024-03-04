@@ -14,6 +14,7 @@
     ./packages.nix
     ./rofi.nix
     ./starship.nix
+    ./tmux.nix
     ./waybar.nix
     ./wlogout.nix
     ./swappy.nix
