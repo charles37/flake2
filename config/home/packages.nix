@@ -17,6 +17,7 @@ in {
     zoom-us
     libreoffice-still
     pika-backup
+    warp-terminal
 
 
     # Import Scripts
