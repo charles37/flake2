@@ -138,6 +138,14 @@ in {
         
       };
       lsp-lines.enable = true;
+      luasnip = {
+        enable = true;
+        extraConfig = {
+          enable_autosnippets = true; 
+          store_selection_keys = "<Tab>";
+        };
+      };
+      cmp_luasnip.enable = true; # From second config
       treesitter = {
         enable = true;
         nixGrammars = true; # From first config
@@ -146,25 +154,41 @@ in {
       nvim-cmp = {
         enable = true;
         autoEnableSources = true;
+        
         sources = [
             { name = "nvim_lsp"; }
             { name = "luasnip"; option = { show_autosnippets = true; }; } # From second config
-            { name = "path"; }
+            #{ name = "path"; }
             { name = "buffer"; }
             #{ name = "copilot-vim"; } not necessary
         ];
         mapping = {
           "<CR>" = "cmp.mapping.confirm({ select = true })"; # From first config
           "<C-j>" = { action = ''cmp.mapping.select_next_item()''; modes = [ "i" "s" ]; }; # From first config
+          "<C-e>" = "cmp.mapping.abort()"; 
+          "<C-Space>" = "cmp.mapping.complete()";
+
         };
         mappingPresets = ["insert"]; # From second config
+        extraOptions = {
+          snippet = { 
+            expand = ''function(args)
+              require('luasnip').lsp_expand(args.body)
+              end;
+              '';
+            };
+        };
         preselect = "Item"; # From second config
       };
       copilot-vim.enable = true; # From second config
-      cmp-nvim-lsp.enable = true; # From second config
-      luasnip.enable = true; # From second config
-      cmp_luasnip.enable = true; # From second config
     };
+
+    extraPlugins = with pkgs.vimPlugins; [
+      # Additional plugins from second configuration
+      lean-nvim
+    ];
+
+
     # Merging keymaps from both configurations
     keymaps = [
       #{

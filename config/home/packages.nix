@@ -14,6 +14,9 @@ in {
     #Bens packages
     signal-desktop
     git-credential-manager
+    zoom-us
+    libreoffice-still
+    pika-backup
 
 
     # Import Scripts

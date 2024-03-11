@@ -13,6 +13,12 @@
     noto-fonts-color-emoji material-icons brightnessctl
     toybox virt-viewer swappy ripgrep appimage-run 
     networkmanagerapplet yad playerctl nh openssl ghc
+
+    ###
+    lean4
+    monitor
+    deepin.deepin-system-monitor
+
   ];
 
   programs = {
