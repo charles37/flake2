@@ -5,10 +5,6 @@
 ## BENS FORK OF ZANEYOS a combination of my previous config [here](https://github.com/charles37/flake) and Tyler Kelley's ZaneyOS
 
 
-## MAINTENANCE MODE
-
-Updates are in programs this will end in less than one hour.
-
 ## ZaneyOS 🟰 Best ❄️ NixOS Configs
 
 ZaneyOS is a simple way of reproducing my configuration on any NixOS system. This includes the wallpaper, scripts, applications, config files, and more.
