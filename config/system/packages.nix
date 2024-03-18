@@ -18,6 +18,7 @@
     lean4
     monitor
     deepin.deepin-system-monitor
+    gleam
 
   ];
 

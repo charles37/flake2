@@ -71,7 +71,6 @@ in {
       comment-nvim.enable = true;
       lualine = {
         enable = true;
-        theme = "bubbles_theme"; # Defined in extraConfigLua
       };
       startup = { 
         enable = true;
@@ -105,7 +104,7 @@ in {
             installRustc = true;
             installCargo = true;
           };
-          nixd.enable = true;
+          #nixd.enable = true;
           html.enable = true;
           ccls.enable = true;
           cmake.enable = true;
@@ -119,6 +118,7 @@ in {
           eslint = { enable = true; };
           hls = { enable = true; };
           elmls = { enable = true; };
+          gleam = { enable = true; };
         };
       };
       harpoon = {
@@ -151,34 +151,28 @@ in {
         nixGrammars = true; # From first config
         ensureInstalled = "all"; # From second config
       };
-      nvim-cmp = {
+      cmp = {
         enable = true;
         autoEnableSources = true;
         
-        sources = [
-            { name = "nvim_lsp"; }
-            { name = "luasnip"; option = { show_autosnippets = true; }; } # From second config
-            #{ name = "path"; }
-            { name = "buffer"; }
-            #{ name = "copilot-vim"; } not necessary
-        ];
-        mapping = {
-          "<CR>" = "cmp.mapping.confirm({ select = true })"; # From first config
-          "<C-j>" = { action = ''cmp.mapping.select_next_item()''; modes = [ "i" "s" ]; }; # From first config
-          "<C-e>" = "cmp.mapping.abort()"; 
-          "<C-Space>" = "cmp.mapping.complete()";
-
-        };
-        mappingPresets = ["insert"]; # From second config
-        extraOptions = {
-          snippet = { 
-            expand = ''function(args)
-              require('luasnip').lsp_expand(args.body)
-              end;
-              '';
-            };
-        };
-        preselect = "Item"; # From second config
+        #cmdline = {
+        #  sources = [
+        #    { name = "nvim_lsp"; }
+        #    { name = "luasnip"; }
+        #    { name = "path"; }
+        #    { name = "buffer"; }
+        #    #{ name = "copilot-vim"; } not necessary
+        #  ];
+        #  mapping = {
+        #    "<CR>" = "cmp.mapping.confirm({ select = true })"; # From first config
+        #    "<C-d>" = "cmp.mapping.scroll_docs(-4)";
+        #    "<C-e>" = "cmp.mapping.close()";
+        #    "<C-f>" = "cmp.mapping.scroll_docs(4)";
+        #    "<C-j>" = "cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' })";
+        #    "<C-k>" = "cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 's' })";
+        #    "<C-Space>" = "cmp.mapping.complete()";
+        #  };
+        #};
       };
       copilot-vim.enable = true; # From second config
     };
@@ -186,6 +180,8 @@ in {
     extraPlugins = with pkgs.vimPlugins; [
       # Additional plugins from second configuration
       lean-nvim
+      gleam-vim
+      nvim-treesitter-parsers.gleam
     ];
 
 
