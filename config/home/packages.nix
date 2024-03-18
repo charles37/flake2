@@ -17,6 +17,7 @@ in {
     zoom-us
     libreoffice-still
     pika-backup
+    evince
     #warp-terminal
 
 

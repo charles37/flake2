@@ -229,6 +229,8 @@ in {
       { mode = "n"; key = "<leader>mr"; action = "<cmd>CellularAutomaton make_it_rain<CR>"; }
       { mode = "n"; key = "<leader><leader>"; action = "function() vim.cmd(\"so\") end"; }
       { mode = "n"; key = "<leader>vpp"; action = "<cmd>e ~/flake/hosts/home.nix<CR>"; }
+      { mode = "n"; key = "<leader>cp"; action = ":Copilot enable<CR>"; }
+      { mode = "n"; key = "<leader>cn"; action = ":Copilot disable<CR>"; }
 
     ];
 
