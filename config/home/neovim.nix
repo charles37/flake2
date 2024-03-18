@@ -140,12 +140,11 @@ in {
       lsp-lines.enable = true;
       luasnip = {
         enable = true;
-        extraConfig = {
-          enable_autosnippets = true; 
-          store_selection_keys = "<Tab>";
-        };
+        #extraConfig = {
+        #  enable_autosnippets = true; 
+        #  store_selection_keys = "<Tab>";
+        #};
       };
-      cmp_luasnip.enable = true; # From second config
       treesitter = {
         enable = true;
         nixGrammars = true; # From first config
@@ -154,9 +153,28 @@ in {
       cmp = {
         enable = true;
         autoEnableSources = true;
-        
-        #cmdline = {
-        #  sources = [
+        settings = {
+          snippet.expand = "function(args) require('luasnip').lsp_expand(args.body) end"; 
+          mapping = {
+           "<CR>" = "cmp.mapping.confirm({ select = true })"; # From first config
+           "<C-d>" = "cmp.mapping.scroll_docs(-4)";
+           "<C-e>" = "cmp.mapping.close()";
+           "<C-f>" = "cmp.mapping.scroll_docs(4)";
+           "<C-j>" = "cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' })";
+           "<C-k>" = "cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 's' })";
+           "<C-Space>" = "cmp.mapping.complete()";
+          };
+          sources = [
+            { name = "nvim_lsp"; }
+            { name = "luasnip"; }
+            { name = "path"; }
+            { name = "buffer"; }
+            #{ name = "copilot-vim"; } not necessary
+          ];  
+        };
+      
+      #cmdline = {
+      #  sources = [
         #    { name = "nvim_lsp"; }
         #    { name = "luasnip"; }
         #    { name = "path"; }
