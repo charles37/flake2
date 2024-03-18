@@ -19,6 +19,7 @@
     monitor
     deepin.deepin-system-monitor
     gleam
+    erlang
 
   ];
 
