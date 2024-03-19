@@ -14,12 +14,18 @@
     toybox virt-viewer swappy ripgrep appimage-run 
     networkmanagerapplet yad playerctl nh openssl ghc
 
+    ### waybar dependency new
+    wireplumber
+
     ###
     lean4
     monitor
     deepin.deepin-system-monitor
     gleam
     erlang
+    rebar3
+    zlib
+    stack
 
   ];
 

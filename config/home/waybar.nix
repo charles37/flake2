@@ -8,7 +8,9 @@ in with lib; {
   # Configure & Theme Waybar
   programs.waybar = {
     enable = true;
-    package = pkgs.waybar;
+    package = pkgs.waybar.overrideAttrs (oldAttrs: {
+      mesonFlags = oldAttrs.mesonFlags ++ [ "-Dwireplumber=disabled" ];
+    });
     settings = [{
       layer = "top";
       position = "top";
