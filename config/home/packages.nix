@@ -18,6 +18,7 @@ in {
     libreoffice-still
     pika-backup
     evince
+    whatsapp-for-linux
     #warp-terminal
 
 

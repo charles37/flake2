@@ -26,6 +26,9 @@
     rebar3
     zlib
     stack
+    cargo
+    cabal-install
+    haskellPackages.Cabal_3_10_2_1
 
   ];
 
