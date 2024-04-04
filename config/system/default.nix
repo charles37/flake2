@@ -27,6 +27,7 @@
     ./services.nix
     ./steam.nix
     ./syncthing.nix
+    ./virtualbox.nix
     ./vm.nix
   ];
 }

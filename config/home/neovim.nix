@@ -119,6 +119,7 @@ in {
           hls = { enable = true; };
           elmls = { enable = true; };
           gleam = { enable = true; };
+          julials = { enable = true; };
         };
       };
       harpoon = {

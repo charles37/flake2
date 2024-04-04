@@ -29,6 +29,7 @@
     cargo
     cabal-install
     haskellPackages.Cabal_3_10_2_1
+    julia_19
 
   ];
 
