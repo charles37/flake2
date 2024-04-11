@@ -16,6 +16,10 @@ theKBDLayout theSecondKBDLayout; in
       wayland.enable = true;
       theme = "tokyo-night-sddm";
     };
+    displayManager.setupCommands = ''
+      xhost +local:docker
+    '';
+      
   };
 
   environment.systemPackages =

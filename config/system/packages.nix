@@ -4,6 +4,13 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+
+  nixpkgs.config.permittedInsecurePackages = [
+   "adobe-reader-9.5.5"
+  ];
+  
+
+
   # List System Programs
   environment.systemPackages = with pkgs; [
     wget curl git cmatrix lolcat neofetch htop btop libvirt
@@ -30,6 +37,10 @@
     cabal-install
     haskellPackages.Cabal_3_10_2_1
     julia_19
+    openssl
+
+    adobe-reader
+    xorg.xhost
 
   ];
 

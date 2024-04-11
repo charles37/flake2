@@ -19,6 +19,7 @@ in {
     pika-backup
     evince
     whatsapp-for-linux
+    chromium
     #warp-terminal
 
 
@@ -38,6 +39,7 @@ in {
   ];
 
   programs.gh.enable = true;
+  
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
