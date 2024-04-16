@@ -126,7 +126,7 @@ in {
         enable = true;
         enableTelescope = true;
         keymaps = {
-          addFile = "<leader> a";
+          addFile = "<leader>a";
           cmdToggleQuickMenu = "<C-e>";
 
           navFile = {
@@ -138,7 +138,6 @@ in {
         };
         
       };
-      lsp-lines.enable = true;
       luasnip = {
         enable = true;
         #extraConfig = {
@@ -198,9 +197,9 @@ in {
 
     extraPlugins = with pkgs.vimPlugins; [
       # Additional plugins from second configuration
-      lean-nvim
-      gleam-vim
-      nvim-treesitter-parsers.gleam
+      #lean-nvim
+      #gleam-vim
+      #nvim-treesitter-parsers.gleam
     ];
 
 
@@ -235,8 +234,8 @@ in {
       { mode = "n"; key = "Q"; action = "<nop>"; }
       { mode = "n"; key = "<C-f>"; action = "<cmd>silent !tmux neww tmux-sessionizer<CR>"; }
       { mode = "n"; key = "<leader>f"; action = "vim.lsp.buf.format"; }
-      { mode = "n"; key = "<C-k>"; action = "<cmd>cnext<CR>zz"; }
-      { mode = "n"; key = "<C-j>"; action = "<cmd>cprev<CR>zz"; }
+      #{ mode = "n"; key = "<C-k>"; action = "<cmd>cnext<CR>zz"; } 
+      #{ mode = "n"; key = "<C-j>"; action = "<cmd>cprev<CR>zz"; }
       { mode = "n"; key = "<leader>k"; action = "<cmd>lnext<CR>zz"; }
       { mode = "n"; key = "<leader>j"; action = "<cmd>lprev<CR>zz"; }
       { mode = "n"; key = "<leader>s"; action = ":<C-u>%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left><CR>"; }
@@ -249,12 +248,34 @@ in {
 
     ];
 
-    extraConfigLua = ''
+    extraConfigLua = ''  
       vim.opt.guifont = "JetBrainsMono\\ NFM,Noto_Color_Emoji:h14"
       vim.g.neovide_cursor_animation_length = 0.05
       vim.g.mapleader = ' '
       vim.keymap.set("n", "<leader><leader>", function() vim.cmd("so") end)
       vim.opt.isfname:append("@-@");
+
+
+     vim.diagnostic.config({
+       virtual_text = {
+           prefix = "", 
+           format = function(diagnostic)
+               local code = diagnostic.code or (diagnostic.name == "UnusedLocal" and "_U" or diagnostic.name == "UnusedFunction" and "_F")
+               if code then
+                   return string.format('%s', code):sub(1, 1)
+               end
+               return ""
+           end,
+       },
+       float = {
+           focusable = false,
+           style = "minimal",
+           border = "rounded",
+           source = "always",
+           header = "",
+           prefix = "",
+       },
+     })      
 
       -- Custom colors defined in the first configuration
       local colors = {
@@ -312,7 +333,7 @@ in {
         tabline = {},
         extensions = {},
       }
-    '';
+    ''; 
 
     extraConfigVim = ''
       set noshowmode
