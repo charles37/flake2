@@ -9,6 +9,7 @@
    "adobe-reader-9.5.5"
   ];
   
+  nix.settings.trusted-users = [ "root" "ben" ];
 
 
   # List System Programs
@@ -35,9 +36,11 @@
     stack
     cargo
     cabal-install
-    haskellPackages.Cabal_3_10_2_1
     julia_19
     openssl
+
+    # zero2prod
+    doctl
 
     adobe-reader
     xorg.xhost

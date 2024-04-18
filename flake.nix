@@ -12,7 +12,7 @@
       inputs.hyprland.follows = "hyprland";
     };
     nixvim = {
-      url = "github:nix-community/nixvim";
+      url = "github:charles37/nixvim-new";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     impermanence.url = "github:nix-community/impermanence";

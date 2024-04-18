@@ -140,10 +140,14 @@ in {
       };
       luasnip = {
         enable = true;
-        #extraConfig = {
-        #  enable_autosnippets = true; 
-        #  store_selection_keys = "<Tab>";
-        #};
+        extraConfig = {
+          enable_autosnippets = true; 
+          store_selection_keys = "<Tab>";
+        };
+      };
+      rust-tools = {
+        enable = true;
+        inlayHints.auto = true;
       };
       treesitter = {
         enable = true;
@@ -153,16 +157,22 @@ in {
       cmp = {
         enable = true;
         autoEnableSources = true;
-        settings = {
-          snippet.expand = "function(args) require('luasnip').lsp_expand(args.body) end"; 
+        extraOptions = {
+          snippet = {
+            expand = ''
+                function(args)
+                  require('luasnip').lsp_expand(args.body)
+                end
+            '';
+          };
           mapping = {
-           "<CR>" = "cmp.mapping.confirm({ select = true })"; # From first config
-           "<C-d>" = "cmp.mapping.scroll_docs(-4)";
-           "<C-e>" = "cmp.mapping.close()";
-           "<C-f>" = "cmp.mapping.scroll_docs(4)";
-           "<C-j>" = "cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' })";
-           "<C-k>" = "cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 's' })";
-           "<C-Space>" = "cmp.mapping.complete()";
+            "<CR>" = "cmp.mapping.confirm({ select = true })"; # From first config
+            "<C-d>" = "cmp.mapping.scroll_docs(-4)";
+            "<C-e>" = "cmp.mapping.close()";
+            "<C-f>" = "cmp.mapping.scroll_docs(4)";
+            "<C-j>" = "cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' })";
+            "<C-k>" = "cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 's' })";
+            "<C-Space>" = "cmp.mapping.complete()";
           };
           sources = [
             { name = "nvim_lsp"; }
