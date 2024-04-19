@@ -11,45 +11,52 @@
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
     };
-    nixvim = {
-      url = "github:charles37/nixvim-new";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nixvim.url = "github:charles37/nixvim-new";
     impermanence.url = "github:nix-community/impermanence";
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, impermanence, ... }:
-  let
+  outputs = inputs @ {
+    nixpkgs,
+    home-manager,
+    impermanence,
+    ...
+  }: let
     system = "x86_64-linux";
     inherit (import ./options.nix) username hostname;
 
     pkgs = import nixpkgs {
       inherit system;
       config = {
-	    allowUnfree = true;
+        allowUnfree = true;
       };
     };
   in {
     nixosConfigurations = {
       "${hostname}" = nixpkgs.lib.nixosSystem {
-	specialArgs = { 
-          inherit system; inherit inputs; 
-          inherit username; inherit hostname;
+        specialArgs = {
+          inherit system;
+          inherit inputs;
+          inherit username;
+          inherit hostname;
         };
-	modules = [ 
-	  ./system.nix
-	  impermanence.nixosModules.impermanence
-          home-manager.nixosModules.home-manager {
-	    home-manager.extraSpecialArgs = {
-	      inherit username; inherit inputs;
-              inherit (inputs.nix-colors.lib-contrib {inherit pkgs;}) gtkThemeFromScheme;
+        modules = [
+          ./system.nix
+          impermanence.nixosModules.impermanence
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              extraSpecialArgs = {
+                inherit username;
+                inherit inputs;
+                inherit (inputs.nix-colors.lib-contrib {inherit pkgs;}) gtkThemeFromScheme;
+              };
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              backupFileExtension = "backup";
+              users.${username} = import ./home.nix;
             };
-	    home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.backupFileExtension = "backup";
-	    home-manager.users.${username} = import ./home.nix;
-	  }
-	];
+          }
+        ];
       };
     };
   };

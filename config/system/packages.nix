@@ -1,26 +1,64 @@
-{ pkgs, config, inputs, ... }:
-
 {
+  pkgs,
+  config,
+  inputs,
+  ...
+}: {
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-
   nixpkgs.config.permittedInsecurePackages = [
-   "adobe-reader-9.5.5"
+    "adobe-reader-9.5.5"
   ];
-  
-  nix.settings.trusted-users = [ "root" "ben" ];
 
+  nix.settings.trusted-users = ["root" "ben"];
 
   # List System Programs
   environment.systemPackages = with pkgs; [
-    wget curl git cmatrix lolcat neofetch htop btop libvirt
-    polkit_gnome lm_sensors unzip unrar libnotify eza
-    v4l-utils ydotool wl-clipboard socat cowsay lsd lshw
-    pkg-config meson hugo gnumake ninja go nodejs symbola
-    noto-fonts-color-emoji material-icons brightnessctl
-    toybox virt-viewer swappy ripgrep appimage-run 
-    networkmanagerapplet yad playerctl nh openssl ghc
+    wget
+    curl
+    git
+    cmatrix
+    lolcat
+    neofetch
+    htop
+    btop
+    libvirt
+    polkit_gnome
+    lm_sensors
+    unzip
+    unrar
+    libnotify
+    eza
+    v4l-utils
+    ydotool
+    wl-clipboard
+    socat
+    cowsay
+    lsd
+    lshw
+    pkg-config
+    meson
+    hugo
+    gnumake
+    ninja
+    go
+    nodejs
+    symbola
+    noto-fonts-color-emoji
+    material-icons
+    brightnessctl
+    toybox
+    virt-viewer
+    swappy
+    ripgrep
+    appimage-run
+    networkmanagerapplet
+    yad
+    playerctl
+    nh
+    openssl
+    ghc
 
     ### waybar dependency new
     wireplumber
@@ -39,18 +77,19 @@
     julia_19
     openssl
 
+    qgis
+
     # zero2prod
     doctl
 
     adobe-reader
     xorg.xhost
-
   ];
 
   programs = {
     steam.gamescopeSession.enable = true;
     dconf.enable = true;
-    seahorse.enable=true;
+    seahorse.enable = true;
     hyprland = {
       enable = true;
       package = inputs.hyprland.packages.${pkgs.system}.hyprland;
