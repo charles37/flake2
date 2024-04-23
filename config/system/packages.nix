@@ -79,6 +79,9 @@
 
     qgis
 
+    #MLIR
+    bazelisk
+
     # zero2prod
     doctl
 

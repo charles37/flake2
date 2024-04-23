@@ -51,6 +51,7 @@ in {
     chromium
     figma-linux
     lazygit
+    whatsapp-for-linux
     #warp-terminal
 
     inputs.nixvim.packages."x86_64-linux".default
