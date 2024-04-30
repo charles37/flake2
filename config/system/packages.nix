@@ -80,7 +80,7 @@
     qgis
 
     #MLIR
-    bazelisk
+    #bazelisk
 
     # zero2prod
     doctl
@@ -93,6 +93,7 @@
     steam.gamescopeSession.enable = true;
     dconf.enable = true;
     seahorse.enable = true;
+    nix-ld.enable = true;
     hyprland = {
       enable = true;
       package = inputs.hyprland.packages.${pkgs.system}.hyprland;
