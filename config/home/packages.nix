@@ -52,6 +52,7 @@ in {
     figma-linux
     lazygit
     whatsapp-for-linux
+    swiPrologWithGui
     #warp-terminal
 
     inputs.nixvim.packages."x86_64-linux".default
