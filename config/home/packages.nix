@@ -53,6 +53,7 @@ in {
     lazygit
     whatsapp-for-linux
     swiPrologWithGui
+    speechd
     #warp-terminal
 
     inputs.nixvim.packages."x86_64-linux".default
