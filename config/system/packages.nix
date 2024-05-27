@@ -77,7 +77,7 @@
     julia_19
     openssl
 
-    qgis
+    #qgis
 
     #MLIR
     #bazelisk
@@ -87,6 +87,7 @@
 
     adobe-reader
     xorg.xhost
+    zluda
   ];
 
   programs = {

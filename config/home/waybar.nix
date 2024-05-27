@@ -26,7 +26,7 @@ in
 
           "hyprland/workspaces" = {
             format =
-              if bar-number == true
+              if bar-number
               then "{name}"
               else "{icon}";
             format-icons = {
@@ -39,7 +39,7 @@ in
           };
           "clock" = {
             format =
-              if clock24h == true
+              if clock24h
               then ''{:%H:%M}''
               else ''{:%I:%M %p}'';
             tooltip = true;
@@ -155,14 +155,14 @@ in
       ];
       style = concatStrings [
         ''
-               * {
-          font-size: 16px;
-          font-family: JetBrainsMono Nerd Font, Font Awesome, sans-serif;
-             	font-weight: bold;
-               }
-               window#waybar {
-          ${
-            if slickbar == true || simplebar == true
+            * {
+              font-size: 16px;
+              font-family: JetBrainsMono Nerd Font, Font Awesome, sans-serif;
+              font-weight: bold;
+            }
+            window#waybar {
+              ${
+            if slickbar || simplebar
             then ''
               background-color: rgba(26,27,38,0);
               border-bottom: 1px solid rgba(26,27,38,0);
@@ -176,9 +176,9 @@ in
               color: #${palette.base0F};
             ''
           }
-               }
-               #workspaces {
-          ${
+            }
+            #workspaces {
+              ${
             if slickbar == true
             then ''
               background: #${palette.base00};
@@ -208,9 +208,9 @@ in
               color: #${palette.base00};
             ''
           }
-               }
-               #workspaces button {
-          ${
+            }
+          #workspaces button {
+              ${
             if slickbar == true
             then ''
               padding: 0px 5px;
@@ -245,9 +245,9 @@ in
                      transition: ${betterTransition};
             ''
           }
-               }
-               #workspaces button.active {
-          ${
+                   }
+            #workspaces button.active {
+              ${
             if slickbar == true
             then ''
               padding: 0px 5px;
@@ -287,9 +287,9 @@ in
               min-width: 40px;
             ''
           }
-               }
-               #workspaces button:hover {
-          ${
+                   }
+                   #workspaces button:hover {
+              ${
             if slickbar == true
             then ''
               border-radius: 15px;
@@ -315,36 +315,36 @@ in
                      transition: ${betterTransition};
             ''
           }
-               }
-               @keyframes gradient_horizontal {
-          0% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
-          100% {
-            background-position: 0% 50%;
-          }
-               }
-               @keyframes swiping {
-                 0% {
-            background-position: 0% 200%;
-          }
-          100% {
-            background-position: 200% 200%;
-          }
-               }
-               tooltip {
-          background: #${palette.base00};
-          border: 1px solid #${palette.base0E};
-          border-radius: 10px;
-               }
-               tooltip label {
-          color: #${palette.base07};
-               }
-               #window {
-          ${
+                   }
+                   @keyframes gradient_horizontal {
+              0% {
+                background-position: 0% 50%;
+              }
+              50% {
+                background-position: 100% 50%;
+              }
+              100% {
+                background-position: 0% 50%;
+              }
+                   }
+                   @keyframes swiping {
+                     0% {
+                background-position: 0% 200%;
+              }
+              100% {
+                background-position: 200% 200%;
+              }
+                   }
+                   tooltip {
+              background: #${palette.base00};
+              border: 1px solid #${palette.base0E};
+              border-radius: 10px;
+                   }
+                   tooltip label {
+              color: #${palette.base07};
+                   }
+                   #window {
+              ${
             if slickbar == true
             then ''
               color: #${palette.base05};
@@ -369,10 +369,10 @@ in
               border-radius: 10px;
             ''
           }
-               }
-               #memory {
-            	color: #${palette.base0F};
-          ${
+                   }
+                   #memory {
+                	color: #${palette.base0F};
+              ${
             if slickbar == true
             then ''
               background: #${palette.base00};
@@ -394,10 +394,10 @@ in
               border-radius: 10px;
             ''
           }
-               }
-               #clock {
-             	color: #${palette.base0B};
-          ${
+                   }
+                   #clock {
+                 	color: #${palette.base0B};
+              ${
             if slickbar == true
             then ''
               background: #${palette.base00};
@@ -419,10 +419,10 @@ in
               border-radius: 10px;
             ''
           }
-               }
-               #cpu {
-             	color: #${palette.base07};
-          ${
+                   }
+                   #cpu {
+                 	color: #${palette.base07};
+              ${
             if slickbar == true
             then ''
               background: #${palette.base00};
@@ -444,10 +444,10 @@ in
               border-radius: 10px;
             ''
           }
-               }
-               #disk {
-             	color: #${palette.base03};
-          ${
+                   }
+                   #disk {
+                 	color: #${palette.base03};
+              ${
             if slickbar == true
             then ''
               background: #${palette.base00};
@@ -469,10 +469,10 @@ in
               border-radius: 10px;
             ''
           }
-               }
-               #battery {
-             	color: #${palette.base08};
-          ${
+                   }
+                   #battery {
+                 	color: #${palette.base08};
+              ${
             if slickbar == true
             then ''
               background: #${palette.base00};
@@ -494,10 +494,10 @@ in
               border-radius: 10px;
             ''
           }
-               }
-               #network {
-             	color: #${palette.base09};
-          ${
+                   }
+                   #network {
+                 	color: #${palette.base09};
+              ${
             if slickbar == true
             then ''
               background: #${palette.base00};
@@ -519,10 +519,10 @@ in
               border-radius: 10px;
             ''
           }
-               }
-               #custom-hyprbindings {
-             	color: #${palette.base0E};
-          ${
+                   }
+                   #custom-hyprbindings {
+                 	color: #${palette.base0E};
+              ${
             if slickbar == true
             then ''
               background: #${palette.base00};
@@ -544,10 +544,10 @@ in
               border-radius: 10px;
             ''
           }
-               }
-               #tray {
-             	color: #${palette.base05};
-          ${
+                   }
+                   #tray {
+                 	color: #${palette.base05};
+              ${
             if slickbar == true
             then ''
               background: #${palette.base00};
@@ -569,10 +569,10 @@ in
               border-radius: 10px;
             ''
           }
-               }
-               #pulseaudio {
-             	color: #${palette.base0D};
-          ${
+                   }
+                   #pulseaudio {
+                 	color: #${palette.base0D};
+              ${
             if slickbar == true
             then ''
               background: #${palette.base00};
@@ -594,10 +594,10 @@ in
               border-radius: 10px;
             ''
           }
-               }
-               #custom-notification {
-             	color: #${palette.base0C};
-          ${
+                   }
+                   #custom-notification {
+                 	color: #${palette.base0C};
+              ${
             if slickbar == true
             then ''
               background: #${palette.base00};
@@ -619,10 +619,10 @@ in
               border-radius: 10px;
             ''
           }
-               }
-               #custom-themeselector {
-             	color: #${palette.base0D};
-          ${
+                   }
+                   #custom-themeselector {
+                 	color: #${palette.base0D};
+              ${
             if slickbar == true
             then ''
               background: #${palette.base00};
@@ -644,10 +644,10 @@ in
               border-radius: 0px 10px 10px 0px;
             ''
           }
-               }
-               #custom-startmenu {
-             	color: #${palette.base03};
-          ${
+                   }
+                   #custom-startmenu {
+                 	color: #${palette.base03};
+              ${
             if slickbar == true
             then ''
               background: #${palette.base00};
@@ -669,10 +669,10 @@ in
               border-radius: 10px;
             ''
           }
-               }
-               #idle_inhibitor {
-             	color: #${palette.base09};
-          ${
+                   }
+                   #idle_inhibitor {
+                 	color: #${palette.base09};
+              ${
             if slickbar == true
             then ''
               background: #${palette.base00};
@@ -694,10 +694,10 @@ in
               border-radius: 0px;
             ''
           }
-               }
-               #custom-exit {
-             	color: #${palette.base0E};
-          ${
+                   }
+                   #custom-exit {
+                 	color: #${palette.base0E};
+              ${
             if slickbar == true
             then ''
               background: #${palette.base00};
@@ -719,7 +719,7 @@ in
               border-radius: 10px 0px 0px 10px;
             ''
           }
-               } ''
+                   } ''
       ];
     };
   }
