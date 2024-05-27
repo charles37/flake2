@@ -87,7 +87,7 @@
 
     adobe-reader
     xorg.xhost
-    zluda
+    #zluda
   ];
 
   programs = {

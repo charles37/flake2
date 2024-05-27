@@ -54,6 +54,7 @@ in {
     whatsapp-for-linux
     swiPrologWithGui
     speechd
+    wl-color-picker
     #warp-terminal
 
     inputs.nixvim.packages."x86_64-linux".default
