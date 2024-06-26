@@ -55,6 +55,7 @@ in {
     swiPrologWithGui
     speechd
     wl-color-picker
+    obsidian
     #warp-terminal
 
     inputs.nixvim.packages."x86_64-linux".default

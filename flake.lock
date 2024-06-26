@@ -231,11 +231,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1716847642,
-        "narHash": "sha256-rjEswRV0o23eBBils8lJXyIGha+l/VjV73IPg+ztxgk=",
+        "lastModified": 1717525419,
+        "narHash": "sha256-5z2422pzWnPXHgq2ms8lcCfttM0dz+hg+x1pCcNkAws=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "10c7c219b7dae5795fb67f465a0d86cbe29f25fa",
+        "rev": "a7117efb3725e6197dd95424136f79147aa35e5b",
         "type": "github"
       },
       "original": {
@@ -306,11 +306,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1716842732,
-        "narHash": "sha256-b80p4J7OSp9LslyJimj2a4wCCNLdjJL3bIgGt+f9Gz4=",
+        "lastModified": 1717698429,
+        "narHash": "sha256-81gZr6hXEySxzdpqltnR4GOBHO+QFRxFHQK3fW3iTTE=",
         "ref": "refs/heads/main",
-        "rev": "722d537a91a9beacf9c12fc1317ff1fbe10ffac5",
-        "revCount": 4747,
+        "rev": "af5f24929d83cc7a97a77de516bc665e38acfa12",
+        "revCount": 4767,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/hyprwm/Hyprland"
@@ -333,11 +333,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1715722806,
-        "narHash": "sha256-KrSLG2H3KGELxTFdiBhv8U6D53Q3UsJsQO+KgEabsNA=",
+        "lastModified": 1717171694,
+        "narHash": "sha256-LN2lrcGdAMpkooleWSOV+/q1+wx1f3pSBs1TWeoMCkA=",
         "owner": "hyprwm",
         "repo": "hyprland-plugins",
-        "rev": "c28d1011f4868c1a1ee80b10d9ee79900686df82",
+        "rev": "e0cad229c3d799c7f72b1217ab2eb300ceecf3ac",
         "type": "github"
       },
       "original": {
@@ -546,11 +546,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1716509168,
-        "narHash": "sha256-4zSIhSRRIoEBwjbPm3YiGtbd8HDWzFxJjw5DYSDy1n8=",
+        "lastModified": 1717602782,
+        "narHash": "sha256-pL9jeus5QpX5R+9rsp3hhZ+uplVHscNJh8n8VpqscM0=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "bfb7a882678e518398ce9a31a881538679f6f092",
+        "rev": "e8057b67ebf307f01bdcc8fba94d94f75039d1f6",
         "type": "github"
       },
       "original": {
@@ -584,11 +584,11 @@
         "pre-commit-hooks": "pre-commit-hooks_2"
       },
       "locked": {
-        "lastModified": 1715053175,
-        "narHash": "sha256-Xx7qoDSBPS6bbmLZR7zKyIk5M0Ujf0xa3YMUeN6Mf2g=",
+        "lastModified": 1717774843,
+        "narHash": "sha256-THwYIH97BqiCj+1e2jTtBimuFHY1W6vcVBJ9No0TfeU=",
         "owner": "charles37",
         "repo": "nixvim-new",
-        "rev": "63a500cf034401b73d970dba40620b8f4d9d8be1",
+        "rev": "ffe5df8b98973fd77e536517a69888e4b9ec0f0e",
         "type": "github"
       },
       "original": {

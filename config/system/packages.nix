@@ -4,12 +4,17 @@
   inputs,
   ...
 }: {
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+    # Allow unfree packages
+    allowUnfree = true;
 
-  nixpkgs.config.permittedInsecurePackages = [
-    "adobe-reader-9.5.5"
-  ];
+    permittedInsecurePackages = [
+      "adobe-reader-9.5.5"
+      "segger-jlink-qt4"
+    ];
+
+    segger-jlink.acceptLicense = true;
+  };
 
   nix.settings.trusted-users = ["root" "ben"];
 
@@ -72,7 +77,6 @@
     rebar3
     zlib
     stack
-    cargo
     cabal-install
     julia_19
     openssl

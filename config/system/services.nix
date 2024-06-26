@@ -42,6 +42,9 @@
     '';
   };
   services.udev = {
+    packages = [
+      pkgs.segger-jlink
+    ];
     extraRules = builtins.concatStringsSep "\n" [
       # Tock device rules for CMSIS-DAP devices
       ''ACTION!="add|change",GOTO="openocd_rules_end"''
