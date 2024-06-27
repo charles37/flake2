@@ -1,7 +1,9 @@
-{ pkgs, config, ... }:
-
-let
-  palette = config.colorScheme.palette;
+{
+  pkgs,
+  config,
+  ...
+}: let
+  inherit (config.colorScheme) palette;
 in {
   home.file.".config/swaylock/config".text = ''
     indicator-caps-lock
