@@ -11,6 +11,7 @@
     permittedInsecurePackages = [
       "adobe-reader-9.5.5"
       "segger-jlink-qt4"
+      "segger-jlink-qt4-796b"
     ];
 
     segger-jlink.acceptLicense = true;
