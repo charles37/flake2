@@ -56,6 +56,7 @@ in {
     speechd
     wl-color-picker
     obsidian
+    diffutils
     #warp-terminal
 
     inputs.nixvim.packages."x86_64-linux".default
