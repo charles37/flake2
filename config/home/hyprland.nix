@@ -150,7 +150,7 @@ in
                    preserve_split = true
                  }
                  master {
-                   new_is_master = true
+                   new_status = true
                  }
                  bind = ${modifier},Return,exec,${terminal}
                  bind = ${modifier}SHIFT,Return,exec,rofi-launcher
