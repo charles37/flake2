@@ -10,11 +10,11 @@
 
     permittedInsecurePackages = [
       "adobe-reader-9.5.5"
-      "segger-jlink-qt4"
-      "segger-jlink-qt4-796b"
+      #"segger-jlink-qt4"
+      #"segger-jlink-qt4-796b"
     ];
 
-    segger-jlink.acceptLicense = true;
+    #segger-jlink.acceptLicense = true;
   };
 
   nix.settings.trusted-users = ["root" "ben"];
