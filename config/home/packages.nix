@@ -57,6 +57,9 @@ in {
     wl-color-picker
     obsidian
     diffutils
+    slack
+    protonvpn-gui_legacy
+    vagrant
     #warp-terminal
 
     inputs.nixvim.packages."x86_64-linux".default

@@ -27,7 +27,7 @@
     jack.enable = true;
   };
   hardware.pulseaudio.enable = false;
-  sound.enable = true;
+  #sound.enable = true;
   security.rtkit.enable = true;
   programs.thunar.enable = true;
   services.gvfs.enable = true;

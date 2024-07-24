@@ -65,6 +65,7 @@
     nh
     openssl
     ghc
+    qemu
 
     ### waybar dependency new
     wireplumber
@@ -113,6 +114,18 @@
     };
     virt-manager.enable = true;
   };
-
-  virtualisation.libvirtd.enable = true;
+  virtualisation.libvirtd = {
+    enable = true;
+    qemu = {
+      package = pkgs.qemu_kvm;
+      swtpm.enable = true;
+      ovmf.packages = [
+        (pkgs.OVMF.override {
+          secureBoot = true;
+          tpmSupport = true;
+        })
+        .fd
+      ];
+    };
+  };
 }
