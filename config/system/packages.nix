@@ -80,7 +80,6 @@
     zlib
     stack
     cabal-install
-    julia_19
     openssl
 
     #qgis
