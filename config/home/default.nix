@@ -1,6 +1,8 @@
-{ pkgs, config, ... }:
-
 {
+  pkgs,
+  config,
+  ...
+}: {
   imports = [
     # Enable &/ Configure Programs
     ./alacritty.nix
@@ -9,6 +11,7 @@
     ./hyprland.nix
     ./kdenlive.nix
     ./kitty.nix
+    ./iamb.nix
     ./neofetch.nix
     ./packages.nix
     ./rofi.nix

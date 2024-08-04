@@ -81,6 +81,7 @@
     stack
     cabal-install
     openssl
+    iamb
 
     #qgis
 
