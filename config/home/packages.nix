@@ -58,7 +58,7 @@ in {
     obsidian
     diffutils
     slack
-    protonvpn-gui_legacy
+    mullvad-vpn
     vagrant
     #warp-terminal
 
