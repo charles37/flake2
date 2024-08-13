@@ -25,6 +25,7 @@
     ./wezterm.nix
     ./zsh.nix
 
+    ./qutebrowser.nix
     # Place Home Files Like Pictures
     ./files.nix
   ];

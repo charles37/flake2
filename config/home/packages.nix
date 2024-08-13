@@ -60,6 +60,7 @@ in {
     slack
     mullvad-vpn
     vagrant
+    qutebrowser-qt5
     #warp-terminal
 
     inputs.nixvim.packages."x86_64-linux".default
