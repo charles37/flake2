@@ -29,6 +29,7 @@
     ./services.nix
     ./steam.nix
     ./syncthing.nix
+    ./mullvad-vpn.nix
     #./virtualbox.nix
     ./vm.nix
   ];

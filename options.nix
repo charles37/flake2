@@ -25,7 +25,7 @@ in {
     else false;
   bar-number = true; # Enable / Disable Workspace Numbers In Waybar
   borderAnim = true;
-  browser = "firefox";
+  browser = "qutebrowser";
   wallpaperGit = "https://gitlab.com/Zaney/my-wallpapers.git"; # This will give you my wallpapers
   # ^ (use as is or replace with your own repo - removing will break the wallsetter script)
   wallpaperDir = "${userHome}/Pictures/Wallpapers";
