@@ -50,8 +50,7 @@ in {
         # Flip tab selection bindings
         "J" = "tab-prev";
         "K" = "tab-next";
-        # Shortcut for Claide.ai
-        ",c" = "open https://claide.ai";
+        ",c" = "open https://claude.ai";
       };
     };
     searchEngines = {
