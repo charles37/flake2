@@ -77,8 +77,8 @@ in {
       config.bind('J', 'tab-prev', mode='normal')
       config.bind('K', 'tab-next', mode='normal')
 
-      # Bind ,c to open Claide.ai
-      config.bind(',c', 'open https://claide.ai', mode='normal')
+      # Bind ,c to open Claude.ai
+      config.bind(',c', 'open https://claude.ai', mode='normal')
     '';
   };
 
