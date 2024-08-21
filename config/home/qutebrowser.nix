@@ -18,13 +18,13 @@ in {
             enabled = true;
             algorithm = "lightness-cielab";
             threshold = {
-              text = 150;
+              foreground = 150;
               background = 100;
             };
             contrast = 0.0;
             policy = {
               images = "smart";
-              videos = "smart";
+              # videos = "smart"; not a real option :(
             };
           };
         };
@@ -39,7 +39,6 @@ in {
       content = {
         javascript = {
           clipboard = "access";
-          can_access_clipboard = true;
         };
       };
     };
@@ -82,7 +81,6 @@ in {
     '';
   };
 
-  # Commented out custom CSS
   # home.file.".config/qutebrowser/user.css".text = ''
   #   /* Custom dark mode CSS */
   #   @media (prefers-color-scheme: dark) {

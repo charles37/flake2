@@ -37,7 +37,6 @@ in {
     spotify
     swayidle
     neovide
-    element-desktop
     swaylock
     (nerdfonts.override {fonts = ["JetBrainsMono"];})
     #Bens packages

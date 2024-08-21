@@ -17,6 +17,10 @@
     #segger-jlink.acceptLicense = true;
   };
 
+  nixpkgs.overlays = [
+    (import ./overlays.nix)
+  ];
+
   nix.settings.trusted-users = ["root" "ben"];
 
   # List System Programs
