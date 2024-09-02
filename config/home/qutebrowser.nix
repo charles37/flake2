@@ -11,22 +11,23 @@ in {
     package = pkgs.qutebrowser;
     loadAutoconfig = true;
     settings = {
+      zoom.default = "125%";
       colors = {
         webpage = {
           preferred_color_scheme = "dark";
-          darkmode = {
-            enabled = true;
-            algorithm = "lightness-cielab";
-            threshold = {
-              foreground = 150;
-              background = 100;
-            };
-            contrast = 0.0;
-            policy = {
-              images = "smart";
-              # videos = "smart"; not a real option :(
-            };
-          };
+          # darkmode = {
+          #   enabled = true;
+          #   algorithm = "lightness-cielab";
+          #   threshold = {
+          #     foreground = 150;
+          #     background = 100;
+          #   };
+          #   contrast = 0.0;
+          #   policy = {
+          #     images = "smart";
+          #     # videos = "smart"; not a real option :(
+          #   };
+          # };
         };
       };
       fonts = {
@@ -67,6 +68,7 @@ in {
 
       # Allow websites to access the clipboard when requested
       config.set('content.javascript.clipboard', 'access')
+      config.set("fonts.hints", 'bold 20px default_family')
 
       # Unbind the default J and K bindings
       config.unbind('J', mode='normal')

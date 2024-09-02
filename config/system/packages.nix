@@ -86,6 +86,7 @@
     cabal-install
     openssl
     iamb
+    element-desktop
 
     #qgis
 
