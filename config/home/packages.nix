@@ -43,7 +43,7 @@ in {
     signal-desktop
     git-credential-manager
     zoom-us
-    libreoffice-still
+    #libreoffice-still
     pika-backup
     evince
     whatsapp-for-linux
@@ -51,7 +51,7 @@ in {
     figma-linux
     lazygit
     whatsapp-for-linux
-    swiPrologWithGui
+    #swiPrologWithGui
     speechd
     wl-color-picker
     obsidian

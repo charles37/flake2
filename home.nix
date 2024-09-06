@@ -1,15 +1,27 @@
-{ config, pkgs, inputs, username,
-  gtkThemeFromScheme, ... }:
-let 
-  inherit (import ./options.nix)
-    gitUsername gitEmail theme browser 
-    wallpaperDir wallpaperGit flakeDir 
-    waybarStyle;
+{
+  config,
+  pkgs,
+  inputs,
+  username,
+  gtkThemeFromScheme,
+  ...
+}: let
+  inherit
+    (import ./options.nix)
+    gitUsername
+    gitEmail
+    theme
+    browser
+    wallpaperDir
+    wallpaperGit
+    flakeDir
+    waybarStyle
+    ;
 in {
   # Home Manager Settings
   home.username = "${username}";
   home.homeDirectory = "/home/${username}";
-  home.stateVersion = "23.11";
+  home.stateVersion = "23.11"; # To Be Updated
 
   # Set The Colorscheme
   colorScheme = inputs.nix-colors.colorSchemes."${theme}";
@@ -36,8 +48,8 @@ in {
   # Create XDG Dirs
   xdg = {
     userDirs = {
-        enable = true;
-        createDirectories = true;
+      enable = true;
+      createDirectories = true;
     };
   };
 
