@@ -16,6 +16,7 @@ in {
   # Install Packages For The User
   home.packages = with pkgs; [
     pkgs."${browser}"
+    firefox
     discord
     libvirt
     swww
@@ -46,11 +47,9 @@ in {
     #libreoffice-still
     pika-backup
     evince
-    whatsapp-for-linux
     chromium
     figma-linux
     lazygit
-    whatsapp-for-linux
     #swiPrologWithGui
     speechd
     wl-color-picker

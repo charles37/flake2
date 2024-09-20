@@ -23,9 +23,11 @@
   }: let
     system = "x86_64-linux";
     inherit (import ./options.nix) username hostname;
-
+    overlays = [
+      #(import ./config/system/overlays/hyprland-overlay.nix)
+    ];
     pkgs = import nixpkgs {
-      inherit system;
+      inherit system overlays;
       config = {
         allowUnfree = true;
       };
@@ -43,6 +45,7 @@
           ./system.nix
           impermanence.nixosModules.impermanence
           home-manager.nixosModules.home-manager
+          {nixpkgs.overlays = overlays;}
           {
             home-manager = {
               extraSpecialArgs = {
