@@ -98,6 +98,8 @@
 
     adobe-reader
     xorg.xhost
+    clinfo
+    libsecret
     #zluda
   ];
 
