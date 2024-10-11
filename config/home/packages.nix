@@ -57,6 +57,8 @@ in {
     diffutils
     slack
     vagrant
+    whatsapp-for-linux
+    google-cloud-sdk
     #warp-terminal
 
     inputs.nixvim.packages."x86_64-linux".default
