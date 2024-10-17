@@ -24,6 +24,9 @@
     system = "x86_64-linux";
     inherit (import ./options.nix) username hostname;
     overlays = [
+      (final: prev: {
+        vagrant = prev.vagrant.override {withLibvirt = false;};
+      })
       #(import ./config/system/overlays/hyprland-overlay.nix)
     ];
     pkgs = import nixpkgs {

@@ -20,6 +20,31 @@
     theKBDVariant
     sdl-videodriver
     ;
+
+  monitorHotplugScript = pkgs.writeShellScriptBin "monitor-hotplug" ''
+    #!/bin/bash
+
+    handle_monitor_change() {
+        if [[ $(hyprctl monitors | grep -c "Monitor") -eq 3 ]]; then
+            # All three monitors connected
+            hyprctl keyword monitor "DP-1,3840x2160@60,0x0,1"
+            hyprctl keyword monitor "DP-5,1920x1080@144,3840x0,1"
+            hyprctl keyword monitor "eDP-2,2560x1600@165,5760x0,1"
+        elif [[ $(hyprctl monitors | grep -c "Monitor") -eq 1 ]]; then
+            # Only laptop screen
+            hyprctl keyword monitor "eDP-2,2560x1600@165,0x0,1"
+        else
+            # Fallback for other scenarios
+            hyprctl keyword monitor ",preferred,auto,1"
+        fi
+    }
+
+    handle_monitor_change
+
+    # Set up udev rule to trigger this script on monitor changes
+    udevadm trigger --type=devices --action=change
+    udevadm control --reload
+  '';
 in
   with lib; {
     wayland.windowManager.hyprland = {
