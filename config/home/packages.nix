@@ -22,7 +22,7 @@ in {
     swww
     grim
     slurp
-    gnome.file-roller
+    pkgs.file-roller
     swaynotificationcenter
     rofi-wayland
     imv
@@ -39,7 +39,23 @@ in {
     swayidle
     neovide
     swaylock
-    (nerdfonts.override {fonts = ["JetBrainsMono"];})
+    #(nerdfonts.override {fonts = ["JetBrainsMono"];})
+    #     ┃        error: nerdfonts has been separated into individual font packages under the namespace nerd-fonts.
+    # ┃            For example change:
+    # ┃              fonts.packages = [
+    # ┃                ...
+    # ┃                (pkgs.nerdfonts.override { fonts = [ "0xproto" "DroidSansMono" ]; })
+    # ┃              ]
+    # ┃            to
+    # ┃              fonts.packages = [
+    # ┃                ...
+    # ┃                pkgs.nerd-fonts._0xproto
+    # ┃                pkgs.nerd-fonts.droid_sans_mono
+    # ┃              ]
+    # ┃            or for all fonts
+    # ┃              font.packages = [ ... ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts)
+
+    pkgs.nerd-fonts.jetbrains-mono
     #Bens packages
     signal-desktop
     git-credential-manager
@@ -47,7 +63,7 @@ in {
     #libreoffice-still
     pika-backup
     evince
-    chromium
+    # chromium
     figma-linux
     lazygit
     #swiPrologWithGui

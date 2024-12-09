@@ -45,12 +45,17 @@ in {
     userEmail = "${gitEmail}";
     lfs.enable = true;
     extraConfig = {
-      credential.helper = "store";
+      credential = {
+        helper = "manager";
+        "https://github.com".username = "${gitUsername}";
+        credentialStore = "cache";
+      };
+      #credential.helper = "store";
       # credential.helper = "${
       #   pkgs.git.override {withLibsecret = true;}
       # }/bin/git-credential-libsecret";
       lfs.fetchexclude = "*";
-      lfs."http://www.github.com/charles37/big_money.git/info/lfs".locksverify = true;
+      lfs."https://www.github.com/charles37/big_money.git/info/lfs".locksverify = true;
     };
   };
 

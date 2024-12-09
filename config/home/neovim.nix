@@ -149,7 +149,7 @@ in {
       };
       rust-tools = {
         enable = true;
-        inlayHints.auto = true;
+        #inlayHints.auto = true;
       };
       treesitter = {
         enable = true;

@@ -67,7 +67,7 @@ in {
       c.content.blocking.adblock.lists = ["https://easylist.to/easylist/easylist.txt", "https://easylist.to/easylist/easyprivacy.txt"]
 
       # Allow websites to access the clipboard when requested
-      config.set('content.javascript.clipboard', 'access')
+      config.set('content.javascript.clipboard', 'access-paste')
       config.set("fonts.hints", 'bold 20px default_family')
 
       # Unbind the default J and K bindings
