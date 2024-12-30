@@ -37,26 +37,29 @@ in {
   xresources.properties = {
     "Xcursor.size" = 24;
   };
-
-  # Install & Configure Git
-  programs.git = {
-    enable = true;
-    userName = "${gitUsername}";
-    userEmail = "${gitEmail}";
-    lfs.enable = true;
-    extraConfig = {
-      credential = {
-        helper = "manager";
-        "https://github.com".username = "${gitUsername}";
-        credentialStore = "cache";
+  programs = {
+    # Install & Configure Git
+    git = {
+      enable = true;
+      userName = "${gitUsername}";
+      userEmail = "${gitEmail}";
+      lfs.enable = true;
+      extraConfig = {
+        credential = {
+          helper = "manager";
+          "https://github.com".username = "${gitUsername}";
+          credentialStore = "cache";
+        };
+        #credential.helper = "store";
+        # credential.helper = "${
+        #   pkgs.git.override {withLibsecret = true;}
+        # }/bin/git-credential-libsecret";
+        lfs.fetchexclude = "*";
+        lfs."https://www.github.com/charles37/big_money.git/info/lfs".locksverify = true;
       };
-      #credential.helper = "store";
-      # credential.helper = "${
-      #   pkgs.git.override {withLibsecret = true;}
-      # }/bin/git-credential-libsecret";
-      lfs.fetchexclude = "*";
-      lfs."https://www.github.com/charles37/big_money.git/info/lfs".locksverify = true;
     };
+
+    home-manager.enable = true;
   };
 
   # Create XDG Dirs
@@ -73,6 +76,4 @@ in {
       uris = ["qemu:///system"];
     };
   };
-
-  programs.home-manager.enable = true;
 }

@@ -30,7 +30,7 @@ in
         fi
         folder2txt() {
           folder_name=$(basename "$1")
-          find "$1" -type f -not -path '*/\.*' -print0 | sort -z | xargs -0 awk 'BEGINFILE {printf "\n\\\047\\\047\\\047---"; print FILENAME; printf "---\\\047\\\047\\\047\n"} {print} ENDFILE {printf "\n\\\047\\\047\\\047---\n"}' > "''${folder_name}.txt"
+          find "$1" -type f -not -path '*/\.*' -print0 | sort -z | xargs -0 awk 'BEGINFILE {printf "\n```---"; print FILENAME; printf "---```\n"} {print} ENDFILE {printf "\n```---\n"}' > "''${folder_name}.txt"
         }
       '';
       sessionVariables = {

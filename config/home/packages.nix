@@ -16,6 +16,7 @@ in {
   # Install Packages For The User
   home.packages = with pkgs; [
     pkgs."${browser}"
+    chromium
     firefox
     discord
     libvirt

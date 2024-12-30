@@ -42,5 +42,9 @@
         name = "adwaita-dark";
         package = pkgs.adwaita-qt;
     };
+    font = {
+      family = "TX-02";
+      size = 12;
+    };
   };
 }

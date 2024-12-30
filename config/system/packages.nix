@@ -100,6 +100,8 @@
     xorg.xhost
     clinfo
     libsecret
+    wireshark
+    burpsuite
     #zluda
   ];
 
@@ -120,7 +122,9 @@
       enableSSHSupport = true;
     };
     virt-manager.enable = true;
+    wireshark.enable = true;
   };
+
   virtualisation.libvirtd = {
     enable = true;
     qemu = {
