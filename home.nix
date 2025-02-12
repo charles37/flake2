@@ -37,6 +37,7 @@ in {
   xresources.properties = {
     "Xcursor.size" = 24;
   };
+
   programs = {
     # Install & Configure Git
     git = {

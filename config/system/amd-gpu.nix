@@ -8,7 +8,7 @@
 in
   lib.mkIf ("${gpuType}" == "amd") {
     systemd.tmpfiles.rules = [
-      "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
+      #"L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
     ];
     services.xserver.enable = true;
     services.xserver.videoDrivers = ["amdgpu"];
@@ -22,11 +22,11 @@ in
       extraPackages32 = [pkgs.driversi686Linux.amdvlk];
       enable = true;
       extraPackages = with pkgs; [
-        pkgs.amdvlk
-        rocmPackages_5.clr.icd
-        rocmPackages_5.clr
-        rocmPackages_5.rocminfo
-        rocmPackages_5.rocm-runtime
+        amdvlk
+        # rocmPackages_5.clr.icd
+        # rocmPackages_5.clr
+        # rocmPackages_5.rocminfo
+        # rocmPackages_5.rocm-runtime
       ];
     };
   }

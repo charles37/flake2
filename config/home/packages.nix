@@ -29,7 +29,7 @@ in {
     imv
     transmission-gtk
     mpv
-    gimp
+    #gimp
     obs-studio
     rustup
     audacity
@@ -74,8 +74,8 @@ in {
     diffutils
     slack
     vagrant
-    whatsapp-for-linux
     google-cloud-sdk
+    espeak
     #warp-terminal
 
     inputs.nixvim.packages."x86_64-linux".default

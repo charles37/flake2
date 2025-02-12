@@ -13,6 +13,8 @@
     };
     nixvim.url = "github:charles37/nixvim-new";
     impermanence.url = "github:nix-community/impermanence";
+    zig-overlay.url = "github:mitchellh/zig-overlay";
+    # ghostty.url = "github:ghostty-org/ghostty";
   };
 
   outputs = inputs @ {

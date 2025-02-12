@@ -80,6 +80,13 @@ in {
 
       # Bind ,c to open Claude.ai
       config.bind(',c', 'open https://claude.ai', mode='normal')
+
+      # enable dark mode by default
+      config.set("colors.webpage.darkmode.enabled", True)
+
+      # use td to toggle dark mode
+      config.bind('td', 'config-cycle colors.webpage.darkmode.enabled true false')
+
     '';
   };
 

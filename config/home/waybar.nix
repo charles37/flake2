@@ -156,10 +156,10 @@ in
       style = concatStrings [
         ''
             * {
+              font-family: "TX-02", "Font Awesome", sans-serif;
               font-size: 16px;
-              font-family: JetBrainsMono Nerd Font, Font Awesome, sans-serif;
               font-weight: bold;
-            }
+            } 
             window#waybar {
               ${
             if slickbar || simplebar

@@ -4,22 +4,24 @@
   inputs,
   ...
 }: {
-  nixpkgs.config = {
-    # Allow unfree packages
-    allowUnfree = true;
+  nixpkgs = {
+    config = {
+      # Allow unfree packages
+      allowUnfree = true;
 
-    permittedInsecurePackages = [
-      "adobe-reader-9.5.5"
-      #"segger-jlink-qt4"
-      #"segger-jlink-qt4-796b"
+      permittedInsecurePackages = [
+        # "adobe-reader-9.5.5"
+        #"segger-jlink-qt4"
+        #"segger-jlink-qt4-796b"
+      ];
+
+      #segger-jlink.acceptLicense = true;
+    };
+
+    overlays = [
+      (import ./overlays.nix)
     ];
-
-    #segger-jlink.acceptLicense = true;
   };
-
-  nixpkgs.overlays = [
-    (import ./overlays.nix)
-  ];
 
   nix.settings.trusted-users = ["root" "ben"];
 
@@ -95,13 +97,18 @@
 
     # zero2prod
     doctl
+    inputs.zig-overlay.packages.${pkgs.system}.master
 
-    adobe-reader
+    ghostty
+
+    #adobe-reader
     xorg.xhost
     clinfo
     libsecret
     wireshark
     burpsuite
+    man-pages
+    man-pages-posix
     #zluda
   ];
 
