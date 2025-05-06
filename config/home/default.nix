@@ -25,6 +25,7 @@
     ./swaync.nix
     ./wezterm.nix
     ./zsh.nix
+    ./fish.nix
     ./qutebrowser.nix
     # Place Home Files Like Pictures
     ./files.nix

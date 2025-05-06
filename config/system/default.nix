@@ -13,6 +13,7 @@
     ./docker.nix
     ./flatpak.nix
     ./hwclock.nix
+    ./garfana.nix
     ./intel-amd.nix
     ./intel-gpu.nix
     ./intel-nvidia.nix

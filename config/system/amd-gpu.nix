@@ -11,7 +11,7 @@ in
       #"L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
     ];
     services.xserver.enable = true;
-    services.xserver.videoDrivers = ["amdgpu"];
+    services.xserver.videoDrivers = ["amdgpu" "modesetting"];
     environment.variables = {
       # As of ROCm 4.5, AMD has disabled OpenCL on Polaris based cards. So this is needed if you have a 500 series card.
       ROC_ENABLE_PRE_VEGA = "1";

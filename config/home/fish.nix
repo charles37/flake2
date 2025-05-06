@@ -17,9 +17,6 @@ in
     programs.fish = {
       enable = true;
 
-      # Typically fish completions “just work”, but you can set this if needed.
-      enableCompletion = true;
-
       # This is the fish equivalent of Bash's `profileExtra` + `initExtra`.
       interactiveShellInit = ''
         # Print a splash, just like in your Bash example:

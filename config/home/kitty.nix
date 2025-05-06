@@ -73,5 +73,7 @@ in
         inactive_tab_font_style bold
         tab_bar_background #${palette.base00}
       '';
+
+      shellIntegration.enableFishIntegration = true;
     };
   }

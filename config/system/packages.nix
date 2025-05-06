@@ -75,6 +75,7 @@
 
     ### waybar dependency new
     wireplumber
+    whatsie
 
     ###
     lean4
@@ -97,8 +98,7 @@
 
     # zero2prod
     doctl
-    inputs.zig-overlay.packages.${pkgs.system}.master
-
+    inputs.zig-overlay.packages.${pkgs.system}."0.14.0"
     ghostty
 
     #adobe-reader

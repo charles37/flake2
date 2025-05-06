@@ -43,7 +43,7 @@ in {
   theKBDVariant = "";
   theLCVariables = "en_US.UTF-8";
   theTimezone = "America/New_York";
-  theShell = "bash"; # Possible options: bash, zsh, nushell
+  theShell = "fish"; # Possible options: bash, zsh, nushell, fish
   theKernel = "zen"; # Possible options: default, latest, lqx, xanmod, zen
   sdl-videodriver = "wayland"; # Either x11 or wayland ONLY. Games might require x11 set here
   # For Hybrid Systems intel-nvidia

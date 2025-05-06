@@ -2,7 +2,7 @@
   description = "ZaneyOS";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/master";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nix-colors.url = "github:misterio77/nix-colors";
@@ -13,7 +13,7 @@
     };
     nixvim.url = "github:charles37/nixvim-new";
     impermanence.url = "github:nix-community/impermanence";
-    zig-overlay.url = "github:mitchellh/zig-overlay";
+    zig-overlay.url = "github:charles37/zig-overlay";
     # ghostty.url = "github:ghostty-org/ghostty";
   };
 
