@@ -100,7 +100,7 @@ in {
         };
         servers = {
           tsserver.enable = true;
-          lua-ls.enable = true;
+          lua_ls.enable = true;
           bashls.enable = true;
           rust-analyzer = {
             enable = true;
@@ -216,16 +216,16 @@ in {
 
     # Merging keymaps from both configurations
     keymaps = [
-      #{
-      #  key = "<Tab>";
-      #  action = ":bnext<CR>";
-      #  options.silent = false;
-      #}
-      #{
-      #  key = "<S-Tab>";
-      #  action = ":bprev<CR>";
-      #  options.silent = false;
-      #}
+      {
+        key = "<Tab>";
+        action = ":bnext<CR>";
+        options.silent = false;
+      }
+      {
+        key = "<S-Tab>";
+        action = ":bprev<CR>";
+        options.silent = false;
+      }
       # Additional keymaps from second configuration
       {
         mode = "n";

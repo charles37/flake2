@@ -71,7 +71,7 @@ in {
 
   environment.variables = {
     VAGRANT_DEFAULT_PROVIDER = "libvirt";
-    FLAKE = "${flakeDir}";
+    NH_FLAKE = "${flakeDir}";
     POLKIT_BIN = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
   };
 
