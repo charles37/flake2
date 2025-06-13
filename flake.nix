@@ -1,5 +1,5 @@
 {
-  description = "ZaneyOS";
+  description = "Ben's Operating System Configuration";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -30,6 +30,7 @@
         vagrant = prev.vagrant.override {withLibvirt = false;};
       })
       #(import ./config/system/overlays/hyprland-overlay.nix)
+      (import ./config/system/overlays.nix)
     ];
     pkgs = import nixpkgs {
       inherit system overlays;

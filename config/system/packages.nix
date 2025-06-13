@@ -90,6 +90,7 @@
     openssl
     iamb
     element-desktop
+    jq
 
     #qgis
 
@@ -100,6 +101,7 @@
     doctl
     inputs.zig-overlay.packages.${pkgs.system}."0.14.0"
     ghostty
+    claude-code
 
     #adobe-reader
     xorg.xhost

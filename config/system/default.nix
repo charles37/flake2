@@ -27,6 +27,7 @@
     ./postgres.nix
     ./python.nix
     ./printer.nix
+    ./redis.nix
     ./services.nix
     ./steam.nix
     ./syncthing.nix

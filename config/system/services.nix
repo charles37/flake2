@@ -41,16 +41,16 @@
       auth include login
     '';
   };
-  services.udev = {
-    #packages = [
-    #  pkgs.segger-jlink
-    #];
-    extraRules = builtins.concatStringsSep "\n" [
-      # Tock device rules for CMSIS-DAP devices
-      ''ACTION!="add|change",GOTO="openocd_rules_end"''
-      ''SUBSYSTEM!="usb|tty|hidraw",GOTO="openocd_rules_end"''
-      ''ATTRS[product]=="CMSIS-DAP*",MODE="664", GROUP="plugdev"''
-      ''LABEL="openocd_rules_end"''
-    ];
-  };
+  users.groups.plugdev = {};
+
+  services.udev.extraRules = ''
+    # CMSIS-DAP / OpenOCD helper rules
+    ACTION!="add|change", GOTO="openocd_rules_end"
+    SUBSYSTEM!="usb|tty|hidraw", GOTO="openocd_rules_end"
+
+    # match any CMSIS-DAP probe
+    ATTRS{product}=="CMSIS-DAP*", MODE="664", GROUP="plugdev"
+
+    LABEL="openocd_rules_end"
+  '';
 }

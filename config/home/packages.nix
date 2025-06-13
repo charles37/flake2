@@ -16,6 +16,7 @@ in {
   # Install Packages For The User
   home.packages = with pkgs; [
     pkgs."${browser}"
+    claude-code
     chromium
     firefox
     discord
@@ -60,7 +61,6 @@ in {
     #Bens packages
     signal-desktop
     git-credential-manager
-    zoom-us
     #libreoffice-still
     pika-backup
     evince
