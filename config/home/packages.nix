@@ -19,7 +19,7 @@ in {
     claude-code
     chromium
     firefox
-    discord
+    # discord
     libvirt
     swww
     grim
@@ -33,7 +33,7 @@ in {
     #gimp
     obs-studio
     rustup
-    audacity
+    # audacity # Temporarily disabled due to RapidJSON build issue
     pavucontrol
     tree
     font-awesome
@@ -73,7 +73,7 @@ in {
     obsidian
     diffutils
     slack
-    vagrant
+    #vagrant
     google-cloud-sdk
     espeak
     #warp-terminal

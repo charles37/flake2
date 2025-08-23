@@ -26,8 +26,22 @@
     system = "x86_64-linux";
     inherit (import ./options.nix) username hostname;
     overlays = [
-      (final: prev: {
-        vagrant = prev.vagrant.override {withLibvirt = false;};
+      (final: prev: let
+        # 1. start from upstream vagrant but disable the embedded libvirt plugin
+        base = prev.vagrant.override {withLibvirt = false;};
+      in {
+        # 2. add the symlink repair so `noBrokenSymlinks` passes
+        vagrant = base.overrideAttrs (old: {
+          # `preFixup` runs *before* the noBrokenSymlinks check
+          preFixup =
+            (old.preFixup or "")
+            + ''
+              rm -f $out/nix-support/gem-meta/spec
+              # two “..” → out/         ; 3.3.0 is the gem dir for Ruby 3.3
+              ln -s ../../lib/ruby/gems/3.3.0/gems/vagrant-${old.version}/vagrant.gemspec \
+                     $out/nix-support/gem-meta/spec
+            '';
+        });
       })
       #(import ./config/system/overlays/hyprland-overlay.nix)
       (import ./config/system/overlays.nix)

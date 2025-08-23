@@ -3,19 +3,21 @@
   buildNpmPackage,
   fetchzip,
   nodejs_20,
+  makeWrapper,
 }:
 buildNpmPackage rec {
   pname = "claude-code";
-  version = "1.0.53";
+  version = "1.0.88";
 
   nodejs = nodejs_20; # required for sandboxed Nix builds on Darwin
 
   src = fetchzip {
     url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-${version}.tgz";
-    hash = "";
+    hash = "sha256-o0A9P0sBB2Fk18CArGGv/QBi55ZtFgoJ2/3gHlDwyEU=";
   };
 
-  npmDepsHash = "sha256-1/WzTOG6JY59nfb0Gp40E9z1G9VwUgqKLgM6zoyllxo=";
+  npmDepsHash = "sha256-/i+LazL2nABNcn+mhyPMed/x5JtbylTFMULMMaIvsUU=";
+  forceEmptyCache = true;
 
   postPatch = ''
     cp ${./claude-code-package-lock.json} package-lock.json
@@ -24,6 +26,18 @@ buildNpmPackage rec {
   dontNpmBuild = true;
 
   AUTHORIZED = "1";
+
+  installPhase = ''
+    runHook preInstall
+    
+    mkdir -p $out/bin $out/lib/claude-code
+    cp -r * $out/lib/claude-code/
+    
+    makeWrapper ${nodejs_20}/bin/node $out/bin/claude \
+      --add-flags "$out/lib/claude-code/cli.js"
+    
+    runHook postInstall
+  '';
 
   # `claude-code` tries to auto-update by default, this disables that functionality.
   # https://docs.anthropic.com/en/docs/agents-and-tools/claude-code/overview#environment-variables
