@@ -19,6 +19,7 @@ in {
     claude-code
     chromium
     firefox
+    wrangler
     # discord
     libvirt
     swww
