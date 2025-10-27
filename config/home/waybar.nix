@@ -224,7 +224,7 @@ in
             ''
             else if simplebar == true
             then ''
-              color: #${config.colorScheme.colors.base03};
+              color: #${palette.base03};
                      background: #${palette.base00};
               margin: 4px 3px;
               opacity: 1;
@@ -300,7 +300,7 @@ in
             ''
             else if simplebar == true
             then ''
-              color: #${config.colorScheme.colors.base05};
+              color: #${palette.base05};
               border: 0px;
               border-radius: 15px;
               transition: ${betterTransition};

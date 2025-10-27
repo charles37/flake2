@@ -4,11 +4,10 @@
   lib,
   ...
 }: {
-  # OpenGL
-  hardware.opengl = {
+  # Graphics
+  hardware.graphics = {
     enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
+    enable32Bit = true;
     extraPackages = with pkgs; [
       #rocmPackages.clr.icd
       #TODO maybe change

@@ -13,16 +13,16 @@ in
       };
     };
 
-    # OpenGL
-    hardware.opengl = {
+    # Graphics
+    hardware.graphics = {
       extraPackages = with pkgs; [
         intel-media-driver
         vaapiIntel
         vaapiVdpau
         libvdpau-va-gl
-        amdvlk
+        # RADV is enabled by default, amdvlk has been removed
       ];
-      extraPackages32 = [pkgs.driversi686Linux.amdvlk];
+      extraPackages32 = [];
     };
 
     systemd.tmpfiles.rules = [

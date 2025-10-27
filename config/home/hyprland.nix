@@ -119,9 +119,8 @@ in
               ''
             }
             gestures {
-              workspace_swipe = true
-              workspace_swipe_fingers = 3
             }
+            gesture = 3, horizontal, workspace
             misc {
               mouse_move_enables_dpms = true
               key_press_enables_dpms = false

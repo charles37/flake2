@@ -27,7 +27,7 @@ in {
     slurp
     pkgs.file-roller
     swaynotificationcenter
-    rofi-wayland
+    rofi
     imv
     transmission-gtk
     mpv

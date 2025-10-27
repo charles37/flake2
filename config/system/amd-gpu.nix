@@ -16,17 +16,16 @@ in
       # As of ROCm 4.5, AMD has disabled OpenCL on Polaris based cards. So this is needed if you have a 500 series card.
       ROC_ENABLE_PRE_VEGA = "1";
     };
-    # OpenGL
-    hardware.opengl = {
-      ## amdvlk: an open-source Vulkan driver from AMD
-      extraPackages32 = [pkgs.driversi686Linux.amdvlk];
+    # Graphics (RADV is enabled by default for AMD)
+    hardware.graphics = {
       enable = true;
       extraPackages = with pkgs; [
-        amdvlk
+        # RADV is enabled by default, amdvlk has been removed
         # rocmPackages_5.clr.icd
         # rocmPackages_5.clr
         # rocmPackages_5.rocminfo
         # rocmPackages_5.rocm-runtime
       ];
+      extraPackages32 = [];
     };
   }

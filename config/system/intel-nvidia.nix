@@ -12,8 +12,8 @@ in
         enableHybridCodec = true;
       };
     };
-    # OpenGL
-    hardware.opengl = {
+    # Graphics
+    hardware.graphics = {
       extraPackages = with pkgs; [
         intel-media-driver
         vaapiIntel

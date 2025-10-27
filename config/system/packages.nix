@@ -75,12 +75,11 @@
 
     ### waybar dependency new
     wireplumber
-    whatsie
+    # whatsie # Temporarily disabled - uses insecure qtwebengine-5.15.19
 
     ###
     lean4
     monitor
-    deepin.deepin-system-monitor
     gleam
     erlang
     rebar3
@@ -139,13 +138,6 @@
     qemu = {
       package = pkgs.qemu_kvm;
       swtpm.enable = true;
-      ovmf.packages = [
-        (pkgs.OVMF.override {
-          secureBoot = true;
-          tpmSupport = true;
-        })
-        .fd
-      ];
     };
   };
 }
