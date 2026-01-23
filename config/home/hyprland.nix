@@ -60,12 +60,12 @@ in
         concatStrings [
           ''
             monitor=,preferred,auto,1
-            windowrule = float,        class:^(steam)$
-            windowrule = size 1080 900, class:^(steam)$
-            windowrule = center,       class:^(steam)$
+            windowrule = float on, match:class ^(steam)$
+            windowrule = size 1080 900, match:class ^(steam)$
+            windowrule = center on, match:class ^(steam)$
 
-            windowrule = fullscreen,   class:^(wlogout)$
-            windowrule = animation fade,class:^(wlogout)$
+            windowrule = fullscreen on, match:class ^(wlogout)$
+            windowrule = animation fade, match:class ^(wlogout)$
 
 
             general {

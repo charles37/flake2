@@ -29,7 +29,7 @@ in {
     swaynotificationcenter
     rofi
     imv
-    transmission-gtk
+    transmission_4-gtk
     mpv
     #gimp
     obs-studio

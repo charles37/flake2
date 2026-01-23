@@ -16,7 +16,7 @@
     font = {
       name = "Ubuntu";
       size = 12;
-      package = pkgs.ubuntu_font_family;
+      package = pkgs.ubuntu-classic;
     };
     theme = {
       name = "${config.colorScheme.slug}";
