@@ -20,7 +20,7 @@ pkgs.writeShellScriptBin "wallsetter" ''
       exit
     else
       cd ${wallpaperDir}
-      git pull
+      timeout 10 git pull &>/dev/null || true
     fi
   else
     ${pkgs.git}/bin/git clone ${wallpaperGit} ${wallpaperDir}

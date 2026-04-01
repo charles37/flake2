@@ -35,7 +35,7 @@
   home-manager.sharedModules = [
     {
       stylix.targets = {
-        nixvim.enable = false;
+        neovim.enable = false;
         vim.enable = false;
         rofi.enable = false;
         waybar.enable = false;

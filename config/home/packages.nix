@@ -72,8 +72,6 @@
     espeak
     #warp-terminal
 
-    inputs.nixvim.packages."x86_64-linux".default
-
     # Import Scripts
     (import ./../scripts/emopicker9000.nix {inherit pkgs;})
     (import ./../scripts/task-waybar.nix {inherit pkgs;})
