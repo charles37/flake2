@@ -40,6 +40,7 @@
         rofi.enable = false;
         waybar.enable = false;
         starship.enable = false;
+        hyprpaper.enable = false;
       };
     }
   ];
