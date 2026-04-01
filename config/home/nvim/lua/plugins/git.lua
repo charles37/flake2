@@ -27,9 +27,10 @@ require("gitlinker").setup({
   },
 })
 
--- Git worktree
-require("git-worktree").setup()
-require("telescope").load_extension("git_worktree")
+-- Git worktree (telescope extension only — no .setup() in newer versions)
+pcall(function()
+  require("telescope").load_extension("git_worktree")
+end)
 
 -- LazyGit
 map("n", "<leader>gg", "<cmd>LazyGit<CR>", { desc = "LazyGit (root dir)" })

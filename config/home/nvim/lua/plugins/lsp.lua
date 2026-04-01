@@ -1,19 +1,23 @@
+-- LSP configuration
+-- Using nvim-lspconfig for server configs (filetypes, root detection)
+-- with LspAttach autocmd for on-attach behavior.
 local lspconfig = require("lspconfig")
 local lsp_format = require("lsp-format")
 
 lsp_format.setup({})
 
--- Rounded borders for hover/signature
-local _border = "rounded"
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = _border })
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = _border })
-vim.diagnostic.config({ float = { border = _border } })
-require("lspconfig.ui.windows").default_options = { border = _border }
+-- Rounded borders
+vim.diagnostic.config({ float = { border = "rounded" } })
 
--- On-attach: set keymaps and enable formatting
-local on_attach = function(client, bufnr)
-  lsp_format.on_attach(client, bufnr)
-end
+-- On-attach via autocmd (nvim 0.11+ pattern)
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    if client then
+      lsp_format.on_attach(client, args.buf)
+    end
+  end,
+})
 
 -- Default capabilities (with cmp-nvim-lsp)
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -49,11 +53,9 @@ local servers = {
 }
 
 for server, config in pairs(servers) do
-  config.on_attach = on_attach
   config.capabilities = capabilities
   lspconfig[server].setup(config)
 end
 
--- LSP keymaps (these are overridden by lspsaga where applicable)
-local map = vim.keymap.set
-map("n", "gD", vim.lsp.buf.declaration, { silent = true, desc = "Goto Declaration" })
+-- LSP keymaps
+vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { silent = true, desc = "Goto Declaration" })
