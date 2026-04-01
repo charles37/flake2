@@ -1,12 +1,12 @@
-require("nvim-treesitter.configs").setup({
-  -- Grammars are installed via Nix, not dynamically
-  auto_install = false,
-  highlight = { enable = true },
-  indent = { enable = true },
-})
+-- Treesitter highlight and indent are enabled by default in recent neovim
+-- when grammars are on the rtp (installed via Nix).
+-- No require("nvim-treesitter.configs") needed — that module was removed upstream.
 
--- Liquidsoap parser config
-local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-parser_config.liquidsoap = {
-  filetype = "liquidsoap",
-}
+vim.treesitter.start = vim.treesitter.start or function() end
+
+-- Ensure highlight and indent are on
+vim.api.nvim_create_autocmd("FileType", {
+  callback = function()
+    pcall(vim.treesitter.start)
+  end,
+})
