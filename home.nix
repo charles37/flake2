@@ -26,19 +26,18 @@
     # Install & Configure Git
     git = {
       enable = true;
-      userName = "${osConfig.mySystem.gitUsername}";
-      userEmail = "${osConfig.mySystem.gitEmail}";
       lfs.enable = true;
-      extraConfig = {
+      signing.format = null;
+      settings = {
+        user = {
+          name = osConfig.mySystem.gitUsername;
+          email = osConfig.mySystem.gitEmail;
+        };
         credential = {
           helper = "manager";
-          "https://github.com".username = "${osConfig.mySystem.gitUsername}";
+          "https://github.com".username = osConfig.mySystem.gitUsername;
           credentialStore = "cache";
         };
-        #credential.helper = "store";
-        # credential.helper = "${
-        #   pkgs.git.override {withLibsecret = true;}
-        # }/bin/git-credential-libsecret";
         lfs.fetchexclude = "*";
         lfs."https://www.github.com/charles37/big_money.git/info/lfs".locksverify = true;
       };
@@ -52,6 +51,7 @@
     userDirs = {
       enable = true;
       createDirectories = true;
+      setSessionVariables = true;
     };
   };
 

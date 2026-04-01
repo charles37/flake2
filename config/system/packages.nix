@@ -106,7 +106,7 @@
     claude-code
 
     #adobe-reader
-    xorg.xhost
+    xhost
     clinfo
     libsecret
     wireshark

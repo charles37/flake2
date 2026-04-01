@@ -1,4 +1,4 @@
-{pkgs, config, ...}: {
+{pkgs, config, lib, ...}: {
   stylix = {
     enable = true;
     image = ../../config/home/files/media/swaylock-bg.jpg;
@@ -40,8 +40,10 @@
         rofi.enable = false;
         waybar.enable = false;
         starship.enable = false;
-        hyprpaper.enable = false;
+        hyprpaper.enable = lib.mkForce false;
       };
+      # Disable hyprpaper service entirely — wallpapers managed by swww/wallsetter
+      services.hyprpaper.enable = lib.mkForce false;
     }
   ];
 }

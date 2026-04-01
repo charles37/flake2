@@ -26,7 +26,7 @@
     pulse.enable = true;
     jack.enable = true;
   };
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   #sound.enable = true;
   security.rtkit.enable = true;
   programs.thunar.enable = true;
@@ -36,11 +36,7 @@
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
   services.blueman.enable = true;
-  security.pam.services.swaylock = {
-    text = ''
-      auth include login
-    '';
-  };
+  security.pam.services.hyprlock = {};
   users.groups.plugdev = {};
 
   services.udev.extraRules = ''
