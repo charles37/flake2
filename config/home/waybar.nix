@@ -2,11 +2,13 @@
   pkgs,
   config,
   lib,
+  osConfig,
   ...
 }: let
-  palette = config.colorScheme.palette;
+  palette = config.lib.stylix.colors;
   betterTransition = "all 0.3s cubic-bezier(.55,-0.68,.48,1.682)";
-  inherit (import ../../options.nix) slickbar bar-number simplebar clock24h;
+  slickbar = osConfig.mySystem.waybarStyle == "slickbar";
+  simplebar = osConfig.mySystem.waybarStyle == "simplebar";
 in
   with lib; {
     # Configure & Theme Waybar
@@ -26,7 +28,7 @@ in
 
           "hyprland/workspaces" = {
             format =
-              if bar-number
+              if osConfig.mySystem.bar-number
               then "{name}"
               else "{icon}";
             format-icons = {
@@ -39,7 +41,7 @@ in
           };
           "clock" = {
             format =
-              if clock24h
+              if osConfig.mySystem.clock24h
               then ''{:%H:%M}''
               else ''{:%I:%M %p}'';
             tooltip = true;

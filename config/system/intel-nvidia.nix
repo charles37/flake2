@@ -3,10 +3,8 @@
   config,
   lib,
   ...
-}: let
-  inherit (import ../../options.nix) intel-bus-id nvidia-bus-id gpuType;
-in
-  lib.mkIf ("${gpuType}" == "intel-nvidia") {
+}:
+  lib.mkIf (config.mySystem.gpuType == "intel-nvidia") {
     nixpkgs.config.packageOverrides = pkgs: {
       vaapiIntel = pkgs.vaapiIntel.override {
         enableHybridCodec = true;
@@ -49,8 +47,8 @@ in
           enableOffloadCmd = true;
         };
         # Make sure to use the correct Bus ID values for your system!
-        intelBusId = "${intel-bus-id}";
-        nvidiaBusId = "${nvidia-bus-id}";
+        intelBusId = config.mySystem.intel-bus-id;
+        nvidiaBusId = config.mySystem.nvidia-bus-id;
       };
     };
   }

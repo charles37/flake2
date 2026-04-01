@@ -3,32 +3,16 @@
   pkgs,
   inputs,
   username,
-  gtkThemeFromScheme,
+  osConfig,
   ...
-}: let
-  inherit
-    (import ./options.nix)
-    gitUsername
-    gitEmail
-    theme
-    browser
-    wallpaperDir
-    wallpaperGit
-    flakeDir
-    waybarStyle
-    ;
-in {
+}: {
   # Home Manager Settings
   home.username = "${username}";
   home.homeDirectory = "/home/${username}";
   home.stateVersion = "24.05"; # To Be Updated
 
-  # Set The Colorscheme
-  colorScheme = inputs.nix-colors.colorSchemes."${theme}";
-
   # Import Program Configurations
   imports = [
-    inputs.nix-colors.homeManagerModules.default
     inputs.hyprland.homeManagerModules.default
     ./config/home
   ];
@@ -42,13 +26,13 @@ in {
     # Install & Configure Git
     git = {
       enable = true;
-      userName = "${gitUsername}";
-      userEmail = "${gitEmail}";
+      userName = "${osConfig.mySystem.gitUsername}";
+      userEmail = "${osConfig.mySystem.gitEmail}";
       lfs.enable = true;
       extraConfig = {
         credential = {
           helper = "manager";
-          "https://github.com".username = "${gitUsername}";
+          "https://github.com".username = "${osConfig.mySystem.gitUsername}";
           credentialStore = "cache";
         };
         #credential.helper = "store";

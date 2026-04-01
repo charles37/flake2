@@ -1,6 +1,5 @@
 { config, lib, options, ... }:
 
-let inherit (import ../../options.nix) ntp; in
-lib.mkIf (ntp == true) {
+lib.mkIf config.mySystem.ntp {
   networking.timeServers = options.networking.timeServers.default ++ [ "pool.ntp.org" ];
 }

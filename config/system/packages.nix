@@ -30,6 +30,9 @@
     wget
     curl
     git
+    sops
+    age
+    ssh-to-age
     cmatrix
     lolcat
     fastfetch

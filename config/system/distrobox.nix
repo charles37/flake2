@@ -1,7 +1,6 @@
 { config, lib, pkgs, ... }:
 
-let inherit (import ../../options.nix) distrobox; in
-lib.mkIf (distrobox == true) {
+lib.mkIf config.mySystem.distrobox {
   virtualisation.podman = {
     enable = true;
     dockerCompat = true;

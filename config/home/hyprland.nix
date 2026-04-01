@@ -3,23 +3,11 @@
   config,
   lib,
   inputs,
+  osConfig,
   ...
 }: let
-  theme = config.colorScheme.palette;
+  theme = config.lib.stylix.colors;
   hyprplugins = inputs.hyprland-plugins.packages.${pkgs.system};
-  inherit
-    (import ../../options.nix)
-    browser
-    cpuType
-    gpuType
-    wallpaperDir
-    borderAnim
-    theKBDLayout
-    terminal
-    theSecondKBDLayout
-    theKBDVariant
-    sdl-videodriver
-    ;
 
   monitorHotplugScript = pkgs.writeShellScriptBin "monitor-hotplug" ''
     #!/bin/bash
@@ -79,7 +67,7 @@ in
             }
 
             input {
-              kb_layout = ${theKBDLayout}, ${theSecondKBDLayout}
+              kb_layout = ${osConfig.mySystem.theKBDLayout}, ${osConfig.mySystem.theSecondKBDLayout}
               kb_options = grp:alt_shift_toggle,caps:super
               follow_mouse = 1
               touchpad {
@@ -96,13 +84,13 @@ in
             env = XDG_SESSION_DESKTOP, Hyprland
             env = GDK_BACKEND, wayland
             env = CLUTTER_BACKEND, wayland
-            env = SDL_VIDEODRIVER, ${sdl-videodriver}
+            env = SDL_VIDEODRIVER, ${osConfig.mySystem.sdl-videodriver}
             env = QT_QPA_PLATFORM, wayland
             env = QT_WAYLAND_DISABLE_WINDOWDECORATION, 1
             env = QT_AUTO_SCREEN_SCALE_FACTOR, 1
             env = MOZ_ENABLE_WAYLAND, 1
             ${
-              if cpuType == "vm"
+              if osConfig.mySystem.cpuType == "vm"
               then ''
                 env = WLR_NO_HARDWARE_CURSORS,1
                 env = WLR_RENDERER_ALLOW_SOFTWARE,1
@@ -111,7 +99,7 @@ in
               ''
             }
             ${
-              if gpuType == "nvidia"
+              if osConfig.mySystem.gpuType == "nvidia"
               then ''
                 env = WLR_NO_HARDWARE_CURSORS,1
               ''
@@ -137,7 +125,7 @@ in
               animation = windowsMove, 1, 5, wind, slide
               animation = border, 1, 1, liner
               ${
-              if borderAnim == true
+              if osConfig.mySystem.borderAnim == true
               then ''
                 animation = borderangle, 1, 30, liner, loop
               ''
@@ -170,7 +158,9 @@ in
             exec-once = swaync
             exec-once = wallsetter
             exec-once = nm-applet --indicator
-            exec-once = swayidle -w timeout 1440 'swaylock -f' timeout 1600 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on' before-sleep 'swaylock -f -c 000000'
+            exec-once = hypridle
+            exec-once = wl-clip-persist --clipboard regular
+            exec-once = wl-paste --watch cliphist store
             dwindle {
               pseudotile = true
               preserve_split = true
@@ -178,20 +168,21 @@ in
             master {
               new_status = true
             }
-            bind = ${modifier},Return,exec,${terminal}
+            bind = ${modifier},Return,exec,${osConfig.mySystem.terminal}
             bind = ${modifier}SHIFT,Return,exec,rofi-launcher
             bind = ${modifier}SHIFT,W,exec,web-search
             bind = ${modifier}SHIFT,N,exec,swaync-client -rs
             ${
-              if browser == "google-chrome"
+              if osConfig.mySystem.browser == "google-chrome"
               then ''
                 bind = ${modifier},W,exec,google-chrome-stable
               ''
               else ''
-                bind = ${modifier},W,exec,${browser}
+                bind = ${modifier},W,exec,${osConfig.mySystem.browser}
               ''
             }
             bind = ${modifier},A,exec,signal-desktop
+            bind = ${modifier},V,exec,cliphist list | rofi -dmenu | cliphist decode | wl-copy
             bind = ${modifier},E,exec,emopicker9000
             bind = ${modifier},S,exec,screenshootin
             bind = ${modifier},D,exec,discord

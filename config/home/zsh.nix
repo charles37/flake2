@@ -1,7 +1,6 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, osConfig, ... }:
 
-let inherit (import ../../options.nix) flakeDir theShell hostname; in
-lib.mkIf (theShell == "zsh") {
+lib.mkIf (osConfig.mySystem.theShell == "zsh") {
   programs.zsh = {
     enable = true;
     syntaxHighlighting.enable = true;
@@ -45,8 +44,8 @@ lib.mkIf (theShell == "zsh") {
     };
     shellAliases = {
       sv="sudo nvim";
-      flake-rebuild="nh os switch -- --nom --hostname ${hostname}";
-      flake-update="nh os switch -- --nom --hostname ${hostname} --update";
+      flake-rebuild="nh os switch -- --nom --hostname ${osConfig.mySystem.hostname}";
+      flake-update="nh os switch -- --nom --hostname ${osConfig.mySystem.hostname} --update";
       gcCleanup="nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
       v="nvim";
       ls="lsd";

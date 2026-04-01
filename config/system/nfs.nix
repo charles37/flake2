@@ -1,9 +1,8 @@
 { config, lib, ... }:
 
-let inherit (import ../../options.nix) nfs nfsMountPoint nfsDevice; in
-lib.mkIf (nfs == true) {
-  fileSystems."${nfsMountPoint}" = {
-    device = "${nfsDevice}";
+lib.mkIf config.mySystem.nfs {
+  fileSystems."${config.mySystem.nfsMountPoint}" = {
+    device = config.mySystem.nfsDevice;
     fsType = "nfs";
   };
   services = {

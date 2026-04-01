@@ -1,0 +1,9 @@
+keys:
+  - &user_ben age1la7p5ncw23kldszsk6lkway7jft05ce8vvserz2pezwz7vwgmpns5qwdve
+  - &host_nora age17q22ae5tpe4nr5yajccx2nljkp78js4q5pmqrfccrx70kq8pcyvq47saew
+creation_rules:
+  - path_regex: secrets/.*\.yaml$
+    key_groups:
+      - age:
+          - *user_ben
+          - *host_nora

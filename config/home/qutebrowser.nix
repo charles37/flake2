@@ -4,7 +4,7 @@
   lib,
   ...
 }: let
-  inherit (config.colorScheme) palette;
+  palette = config.lib.stylix.colors;
 in {
   programs.qutebrowser = {
     enable = true;
@@ -31,8 +31,8 @@ in {
         };
       };
       fonts = {
-        default_family = "JetBrainsMono Nerd Font";
-        default_size = "11pt";
+        default_family = lib.mkForce "JetBrainsMono Nerd Font";
+        default_size = lib.mkForce "11pt";
       };
       tabs.show = "multiple";
       tabs.position = "top";

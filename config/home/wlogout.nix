@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  inherit (config.colorScheme) palette;
+  palette = config.lib.stylix.colors;
 in {
   programs.wlogout = {
     enable = true;

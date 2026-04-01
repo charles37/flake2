@@ -5,7 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    nix-colors.url = "github:misterio77/nix-colors";
+    stylix.url = "github:danth/stylix";
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
@@ -13,6 +13,8 @@
     };
     nixvim.url = "github:charles37/nixvim-new";
     impermanence.url = "github:nix-community/impermanence";
+    sops-nix.url = "github:Mic92/sops-nix";
+    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
     zig-overlay.url = "github:charles37/zig-overlay";
     # ghostty.url = "github:ghostty-org/ghostty";
   };
@@ -24,7 +26,9 @@
     ...
   }: let
     system = "x86_64-linux";
-    inherit (import ./options.nix) username hostname;
+    # These must be available at flake eval time (before module system)
+    username = "ben";
+    hostname = "nora";
     overlays = [
       (final: prev: let
         # 1. start from upstream vagrant but disable the embedded libvirt plugin
@@ -62,8 +66,12 @@
           inherit hostname;
         };
         modules = [
+          ./modules/options.nix
+          ./modules/config.nix
           ./system.nix
           impermanence.nixosModules.impermanence
+          inputs.sops-nix.nixosModules.sops
+          inputs.stylix.nixosModules.stylix
           home-manager.nixosModules.home-manager
           {nixpkgs.overlays = overlays;}
           {
@@ -71,7 +79,6 @@
               extraSpecialArgs = {
                 inherit username;
                 inherit inputs;
-                inherit (inputs.nix-colors.lib-contrib {inherit pkgs;}) gtkThemeFromScheme;
               };
               useGlobalPkgs = true;
               useUserPackages = true;

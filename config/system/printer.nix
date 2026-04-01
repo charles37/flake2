@@ -1,7 +1,6 @@
 { config, lib, pkgs, username, ... }:
 
-let inherit (import ../../options.nix) printer; in
-lib.mkIf (printer == true) {
+lib.mkIf config.mySystem.printer {
   services = {
     printing.enable = true;
     avahi = {

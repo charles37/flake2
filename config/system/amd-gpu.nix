@@ -3,10 +3,8 @@
   config,
   lib,
   ...
-}: let
-  inherit (import ../../options.nix) gpuType;
-in
-  lib.mkIf ("${gpuType}" == "amd") {
+}:
+  lib.mkIf (config.mySystem.gpuType == "amd") {
     systemd.tmpfiles.rules = [
       #"L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
     ];

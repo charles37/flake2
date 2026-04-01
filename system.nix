@@ -5,21 +5,7 @@
   username,
   hostname,
   ...
-}: let
-  inherit
-    (import ./options.nix)
-    theLocale
-    theTimezone
-    gitUsername
-    theShell
-    wallpaperDir
-    wallpaperGit
-    theLCVariables
-    theKBDLayout
-    flakeDir
-    theme
-    ;
-in {
+}: {
   imports = [
     ./hardware.nix
     ./config/system
@@ -36,34 +22,34 @@ in {
   };
 
   # Set your time zone
-  time.timeZone = "${theTimezone}";
+  time.timeZone = config.mySystem.theTimezone;
 
   # Select internationalisation properties
-  i18n.defaultLocale = "${theLocale}";
+  i18n.defaultLocale = config.mySystem.theLocale;
   i18n.extraLocaleSettings = {
-    LC_ADDRESS = "${theLCVariables}";
-    LC_IDENTIFICATION = "${theLCVariables}";
-    LC_MEASUREMENT = "${theLCVariables}";
-    LC_MONETARY = "${theLCVariables}";
-    LC_NAME = "${theLCVariables}";
-    LC_NUMERIC = "${theLCVariables}";
-    LC_PAPER = "${theLCVariables}";
-    LC_TELEPHONE = "${theLCVariables}";
-    LC_TIME = "${theLCVariables}";
+    LC_ADDRESS = config.mySystem.theLCVariables;
+    LC_IDENTIFICATION = config.mySystem.theLCVariables;
+    LC_MEASUREMENT = config.mySystem.theLCVariables;
+    LC_MONETARY = config.mySystem.theLCVariables;
+    LC_NAME = config.mySystem.theLCVariables;
+    LC_NUMERIC = config.mySystem.theLCVariables;
+    LC_PAPER = config.mySystem.theLCVariables;
+    LC_TELEPHONE = config.mySystem.theLCVariables;
+    LC_TIME = config.mySystem.theLCVariables;
   };
 
-  console.keyMap = "${theKBDLayout}";
+  console.keyMap = config.mySystem.theKBDLayout;
 
   # Define a user account.
   users = {
     mutableUsers = true;
     users."${username}" = {
       homeMode = "755";
-      hashedPassword = "$6$YdPBODxytqUWXCYL$AHW1U9C6Qqkf6PZJI54jxFcPVm2sm/XWq3Z1qa94PFYz0FF.za9gl5WZL/z/g4nFLQ94SSEzMg5GMzMjJ6Vd7.";
+      hashedPasswordFile = config.sops.secrets."ben-password".path;
       isNormalUser = true;
-      description = "${gitUsername}";
+      description = config.mySystem.gitUsername;
       extraGroups = ["networkmanager" "wireshark" "wheel" "libvirtd" "libvirt" "kvm" "qemu-libvirtd" "video" "render"];
-      shell = pkgs.${theShell};
+      shell = pkgs.${config.mySystem.theShell};
       ignoreShellProgramCheck = true;
       packages = with pkgs; [];
     };
@@ -71,7 +57,7 @@ in {
 
   environment.variables = {
     VAGRANT_DEFAULT_PROVIDER = "libvirt";
-    NH_FLAKE = "${flakeDir}";
+    NH_FLAKE = config.mySystem.flakeDir;
     POLKIT_BIN = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
   };
 

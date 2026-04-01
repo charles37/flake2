@@ -1,6 +1,5 @@
 { config, lib, pkgs, ... }:
 
-let inherit (import ../../../options.nix) theKernel; in
-lib.mkIf (theKernel == "lqx") {
+lib.mkIf (config.mySystem.theKernel == "lqx") {
   boot.kernelPackages = pkgs.linuxPackages_lqx;
 }

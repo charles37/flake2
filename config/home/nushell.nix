@@ -2,19 +2,11 @@
   config,
   lib,
   pkgs,
+  osConfig,
+  username,
   ...
-}: let
-  inherit
-    (import ../../options.nix)
-    flakeDir
-    flakePrev
-    hostname
-    flakeBackup
-    theShell
-    username
-    ;
-in
-  lib.mkIf (theShell == "nushell") {
+}:
+  lib.mkIf (osConfig.mySystem.theShell == "nushell") {
     # Configure Nushell
     programs = {
       nushell = {
@@ -25,8 +17,8 @@ in
 
           # Set environment variables
           $env.ZANEYOS = true
-          $env.FLAKEBACKUP = "${flakeBackup}"
-          $env.FLAKEPREV = "${flakePrev}"
+          $env.FLAKEBACKUP = "${osConfig.mySystem.flakeBackup}"
+          $env.FLAKEPREV = "${osConfig.mySystem.flakePrev}"
 
           # Custom commands
           def folder2txt [folder: path] {
@@ -77,8 +69,8 @@ in
         '';
         shellAliases = {
           sv = "sudo nvim";
-          flake-rebuild = "nh os switch --hostname ${hostname}";
-          flake-update = "nh os switch --hostname ${hostname} --update";
+          flake-rebuild = "nh os switch --hostname ${osConfig.mySystem.hostname}";
+          flake-update = "nh os switch --hostname ${osConfig.mySystem.hostname} --update";
           # gcCleanup = "nix-collect-garbage --delete-old; sudo nix-collect-garbage -d; sudo /run/current-system/bin/switch-to-configuration boot";
           v = "nvim";
           neofetch = "neofetch --ascii ~/.config/ascii-neofetch";

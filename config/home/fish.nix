@@ -2,18 +2,15 @@
   config,
   lib,
   pkgs,
+  osConfig,
   ...
-}: let
-  inherit
-    (import ../../options.nix)
-    flakeDir
-    flakePrev
-    hostname
-    flakeBackup
-    theShell
-    ;
-in
-  lib.mkIf (theShell == "fish") {
+}:
+  lib.mkIf (osConfig.mySystem.theShell == "fish") {
+    programs.zoxide = {
+      enable = true;
+      enableFishIntegration = true;
+    };
+
     programs.fish = {
       enable = true;
 
@@ -28,8 +25,8 @@ in
         # “-x” means export, so the variable is available to child processes.
         #
         set -x ZANEYOS true
-        set -x FLAKEBACKUP ${flakeBackup}
-        set -x FLAKEPREV ${flakePrev}
+        set -x FLAKEBACKUP ${osConfig.mySystem.flakeBackup}
+        set -x FLAKEPREV ${osConfig.mySystem.flakePrev}
 
         #
         # If you want to source a personal fish config, rename or adapt
@@ -45,8 +42,8 @@ in
         # Define shell aliases. In fish 3.x, you can simply do:
         #
         alias sv 'sudo nvim'
-        alias flake-rebuild "nh os switch --hostname ${hostname}"
-        alias flake-update "nh os switch --hostname ${hostname} --update"
+        alias flake-rebuild "nh os switch --hostname ${osConfig.mySystem.hostname}"
+        alias flake-update "nh os switch --hostname ${osConfig.mySystem.hostname} --update"
         alias gcCleanup 'nix-collect-garbage --delete-old; and sudo nix-collect-garbage -d; and sudo /run/current-system/bin/switch-to-configuration boot'
         alias v "nvim"
         alias ls "lsd"

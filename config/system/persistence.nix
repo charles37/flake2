@@ -1,8 +1,5 @@
 { config, pkgs, lib, username, ... }:
 
-let 
-  inherit ( import ../../options.nix ) username;
-in
 {
   environment.persistence."/nix/persist" = {
     hideMounts = true;
@@ -12,6 +9,7 @@ in
       "/var/lib/nixos"
       "/var/lib/systemd/coredump"
       "/etc/NetworkManager/system-connections"
+      "/etc/ssh"
     ];
     files = [
       # "/etc/machine-id"
@@ -30,6 +28,7 @@ in
 	".ssh"
 	".config/discord"
 	".config/obs-studio"
+	".config/sops"
 	".steam"
       ];
       files = [

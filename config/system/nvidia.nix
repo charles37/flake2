@@ -1,7 +1,6 @@
-{ pkgs, config, lib, gpuType, ... }:
+{ pkgs, config, lib, ... }:
 
-let inherit (import ../../options.nix) gpuType; in
-lib.mkIf ("${gpuType}" == "nvidia") { 
+lib.mkIf (config.mySystem.gpuType == "nvidia") {
   services.xserver.videoDrivers = ["nvidia"];
   hardware.nvidia = {
     # Modesetting is required.

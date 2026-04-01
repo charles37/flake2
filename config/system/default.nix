@@ -30,6 +30,8 @@
     ./redis.nix
     ./services.nix
     ./steam.nix
+    ./stylix.nix
+    ./sops.nix
     ./syncthing.nix
     ./mullvad-vpn.nix
     #./virtualbox.nix

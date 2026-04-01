@@ -1,7 +1,6 @@
-{ pkgs, config, lib, ... }:
+{ pkgs, config, lib, osConfig, ... }:
 
-let inherit (import ../../options.nix) blender; in
-lib.mkIf (blender == true) {
+lib.mkIf (osConfig.mySystem.blender == true) {
   home.packages = with pkgs; [
     pkgs.blender-hip
   ];

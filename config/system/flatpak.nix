@@ -1,7 +1,6 @@
 { pkgs, config, lib, ... }:
 
-let inherit (import ../../options.nix) flatpak; in
-lib.mkIf (flatpak == true) {
+lib.mkIf config.mySystem.flatpak {
   services.flatpak.enable = true;
 
   systemd.services.flatpak-repo = {

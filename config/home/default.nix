@@ -21,7 +21,8 @@
     ./waybar.nix
     ./wlogout.nix
     ./swappy.nix
-    ./swaylock.nix
+    ./hyprlock.nix
+    ./hypridle.nix
     ./swaync.nix
     ./wezterm.nix
     ./zsh.nix

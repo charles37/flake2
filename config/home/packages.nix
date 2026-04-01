@@ -3,19 +3,12 @@
   config,
   username,
   inputs,
+  osConfig,
   ...
-}: let
-  inherit
-    (import ../../options.nix)
-    browser
-    wallpaperDir
-    wallpaperGit
-    flakeDir
-    ;
-in {
+}: {
   # Install Packages For The User
   home.packages = with pkgs; [
-    pkgs."${browser}"
+    pkgs."${osConfig.mySystem.browser}"
     claude-code
     chromium
     firefox
@@ -39,9 +32,9 @@ in {
     tree
     font-awesome
     spotify
-    swayidle
     neovide
-    swaylock
+    cliphist
+    wl-clip-persist
     #(nerdfonts.override {fonts = ["JetBrainsMono"];})
     #     ┃        error: nerdfonts has been separated into individual font packages under the namespace nerd-fonts.
     # ┃            For example change:
@@ -87,20 +80,24 @@ in {
     (import ./../scripts/squirtle.nix {inherit pkgs;})
     (import ./../scripts/wallsetter.nix {
       inherit pkgs;
-      inherit wallpaperDir;
+      wallpaperDir = osConfig.mySystem.wallpaperDir;
       inherit username;
-      inherit wallpaperGit;
+      wallpaperGit = osConfig.mySystem.wallpaperGit;
     })
     (import ./../scripts/themechange.nix {
       inherit pkgs;
-      inherit flakeDir;
+      flakeDir = osConfig.mySystem.flakeDir;
     })
     (import ./../scripts/theme-selector.nix {inherit pkgs;})
     (import ./../scripts/nvidia-offload.nix {inherit pkgs;})
     (import ./../scripts/web-search.nix {inherit pkgs;})
     (import ./../scripts/rofi-launcher.nix {inherit pkgs;})
     (import ./../scripts/screenshootin.nix {inherit pkgs;})
-    (import ./../scripts/list-hypr-bindings.nix {inherit pkgs;})
+    (import ./../scripts/list-hypr-bindings.nix {
+      inherit pkgs;
+      terminal = osConfig.mySystem.terminal;
+      browser = osConfig.mySystem.browser;
+    })
   ];
 
   programs.gh.enable = true;

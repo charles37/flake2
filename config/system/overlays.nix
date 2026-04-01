@@ -1,8 +1,4 @@
 self: super: {
-  # nodePackages.sass was removed from nixpkgs; alias to dart-sass for nix-colors gtkThemeFromScheme
-  nodePackages = super.nodePackages // {
-    sass = super.dart-sass;
-  };
   #iamb = super.callPackage ./overlays/iamb-overlay.nix {};
   #xdg-desktop-portal-hyprland = super.callPackage ./overlays/xdg-desktop-portal-hyprland-overlay.nix {};
   # claude-code: using nixpkgs version; uncomment to use custom overlay from ./overlays/claude-code-overlay.nix
