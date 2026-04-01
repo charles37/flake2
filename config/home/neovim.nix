@@ -69,6 +69,7 @@ in {
       todo-comments-nvim
       lazydev-nvim
       render-markdown-nvim
+      lean-nvim
 
       # Dependencies
       plenary-nvim
