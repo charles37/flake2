@@ -32,7 +32,7 @@
     git
     cmatrix
     lolcat
-    neofetch
+    fastfetch
     htop
     btop
     libvirt
@@ -87,7 +87,7 @@
     stack
     cabal-install
     openssl
-    iamb
+    #iamb # broken in nixpkgs - rust type recursion limit overflow
     element-desktop
     jq
 

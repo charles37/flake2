@@ -7,6 +7,9 @@
   services.grafana = {
     enable = true;
     settings = {
+      security = {
+        secret_key = "$__file{/etc/grafana/secret_key}";
+      };
       server = {
         # Listening Address
         http_addr = "127.0.0.1";

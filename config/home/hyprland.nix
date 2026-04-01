@@ -202,7 +202,7 @@ in
             bind = ${modifier},M,exec,spotify
             bind = ${modifier},Q,killactive,
             bind = ${modifier},P,pseudo,
-            bind = ${modifier}SHIFT,I,togglesplit,
+            bind = ${modifier}SHIFT,I,layoutmsg,togglesplit
             bind = ${modifier},F,fullscreen,
             bind = ${modifier}SHIFT,F,togglefloating,
             bind = ${modifier}SHIFT,C,exit,

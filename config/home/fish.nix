@@ -20,7 +20,7 @@ in
       # This is the fish equivalent of Bash's `profileExtra` + `initExtra`.
       interactiveShellInit = ''
         # Print a splash, just like in your Bash example:
-        neofetch
+        fastfetch
 
         #
         # Export environment variables (equivalent to `sessionVariables`).
@@ -54,7 +54,7 @@ in
         alias la "lsd -a"
         alias lal "lsd -al"
         alias ".." "cd .."
-        alias neofetch "neofetch --ascii ~/.config/ascii-neofetch"
+        alias neofetch "fastfetch"
       '';
 
       functions = {
