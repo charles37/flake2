@@ -1,26 +1,12 @@
 -- LSP configuration using native vim.lsp.config (nvim 0.11+)
-local lsp_format = require("lsp-format")
-lsp_format.setup({})
 
 -- Rounded borders
 vim.diagnostic.config({ float = { border = "rounded" } })
 
--- On-attach via autocmd
-vim.api.nvim_create_autocmd("LspAttach", {
-  callback = function(args)
-    local client = vim.lsp.get_client_by_id(args.data.client_id)
-    if client then
-      lsp_format.on_attach(client, args.buf)
-    end
-  end,
-})
+-- Default capabilities (with blink.cmp)
+local capabilities = require("blink.cmp").get_lsp_capabilities()
 
--- Default capabilities (with cmp-nvim-lsp)
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
--- Server configurations
--- vim.lsp.config uses the server name as key, with filetypes/root_markers
--- nvim-lspconfig still provides the default configs via its plugin/ directory
+-- Server configurations using native vim.lsp.config
 local servers = {
   clangd = {
     cmd = { "clangd", "--offset-encoding=utf-16" },
@@ -58,5 +44,29 @@ for server, config in pairs(servers) do
 end
 vim.lsp.enable(server_names)
 
--- LSP keymaps
-vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { silent = true, desc = "Goto Declaration" })
+-- LSP keymaps (set on attach so they're buffer-local)
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    local buf = args.buf
+    local map = function(mode, lhs, rhs, desc)
+      vim.keymap.set(mode, lhs, rhs, { buffer = buf, silent = true, desc = desc })
+    end
+
+    map("n", "gd", vim.lsp.buf.definition, "Goto Definition")
+    map("n", "gD", vim.lsp.buf.declaration, "Goto Declaration")
+    map("n", "gr", vim.lsp.buf.references, "Goto References")
+    map("n", "gI", vim.lsp.buf.implementation, "Goto Implementation")
+    map("n", "gT", vim.lsp.buf.type_definition, "Type Definition")
+    map("n", "K", vim.lsp.buf.hover, "Hover")
+    map("n", "<leader>cr", vim.lsp.buf.rename, "Rename")
+    map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, "Code Action")
+    map("n", "<leader>cd", vim.diagnostic.open_float, "Line Diagnostics")
+    map("n", "<leader>cw", "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols")
+    map("n", "]d", function()
+      vim.diagnostic.jump({ count = 1 })
+    end, "Next Diagnostic")
+    map("n", "[d", function()
+      vim.diagnostic.jump({ count = -1 })
+    end, "Previous Diagnostic")
+  end,
+})

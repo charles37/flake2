@@ -45,13 +45,12 @@ hl(0, "PmenuSbar", { fg = "none", bg = colors.base01 })
 hl(0, "PmenuThumb", { fg = "none", bg = colors.base01 })
 hl(0, "PmenuSel", { fg = "none", bg = colors.base02 })
 
--- CMP
-hl(0, "CmpItemAbbrMatch", { fg = colors.base05, bg = "none" })
-hl(0, "CmpItemAbbrMatchFuzzy", { fg = colors.base05, bg = "none" })
-hl(0, "CmpItemAbbr", { fg = colors.base03, bg = "none" })
-hl(0, "CmpItemKind", { fg = colors.base0E, bg = "none" })
-hl(0, "CmpItemMenu", { fg = colors.base0E, bg = "none" })
-hl(0, "CmpItemKindSnippet", { fg = colors.base0E, bg = "none" })
+-- Blink completion
+hl(0, "BlinkCmpLabel", { fg = colors.base05, bg = "none" })
+hl(0, "BlinkCmpLabelMatch", { fg = colors.base05, bg = "none", bold = true })
+hl(0, "BlinkCmpLabelDeprecated", { fg = colors.base03, bg = "none", strikethrough = true })
+hl(0, "BlinkCmpKind", { fg = colors.base0E, bg = "none" })
+hl(0, "BlinkCmpGhostText", { fg = colors.base03, bg = "none" })
 
 -- Borders & floats
 hl(0, "VertSplit", { fg = colors.base01, bg = "none" })

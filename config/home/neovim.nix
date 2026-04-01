@@ -21,16 +21,11 @@ in {
       base16-nvim
       biscuit-nvim
 
-      # Completion
-      nvim-cmp
-      cmp-nvim-lsp
-      cmp-buffer
-      cmp-path
-      cmp-emoji
-      cmp_luasnip
-      copilot-cmp
+      # Completion (blink.cmp replaces nvim-cmp + all cmp-* sources)
+      blink-cmp
+      blink-cmp-copilot
+      blink-emoji-nvim
       copilot-lua
-      lspkind-nvim
 
       # Git
       gitsigns-nvim
@@ -38,25 +33,19 @@ in {
       gitlinker-nvim
       git-worktree-nvim
 
-      # LSP
-      nvim-lspconfig
-      lsp-format-nvim
-      lspsaga-nvim
+      # LSP (native vim.lsp.config, no nvim-lspconfig needed)
       trouble-nvim
       conform-nvim
-      none-ls-nvim
+      nvim-lint
       fidget-nvim
       hlchunk-nvim
-
-      # Snippets
-      luasnip
-      friendly-snippets
 
       # Statusline
       lualine-nvim
 
       # Treesitter
       (nvim-treesitter.withAllGrammars)
+      nvim-treesitter-textobjects
 
       # UI
       alpha-nvim
@@ -72,10 +61,14 @@ in {
       grapple-nvim
       vim-illuminate
       nvim-autopairs
+      nvim-surround
       oil-nvim
       undotree
       which-key-nvim
       CopilotChat-nvim
+      todo-comments-nvim
+      lazydev-nvim
+      render-markdown-nvim
 
       # Dependencies
       plenary-nvim

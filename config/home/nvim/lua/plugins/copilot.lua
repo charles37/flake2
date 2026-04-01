@@ -1,11 +1,8 @@
--- Copilot core (suggestions via cmp, not inline)
+-- Copilot core (suggestions via blink.cmp, not inline)
 require("copilot").setup({
   suggestion = { enabled = false },
   panel = { enabled = false },
 })
-
--- Copilot CMP source
-require("copilot_cmp").setup()
 
 -- CopilotChat
 require("CopilotChat").setup({})
